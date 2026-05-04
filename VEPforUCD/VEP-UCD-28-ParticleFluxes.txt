@@ -126,7 +126,7 @@ New Term: phys.luminosity
 Action: Amendement
 Prefix: Q
 Description: Luminosity or total radiative power 
-Additional Property:(dimensionality: [M.L^2.T^-3])
+Additional Property:(dimensionality: [M L^2 T^-3])
 Used_in: 
 
 Rationale: 
