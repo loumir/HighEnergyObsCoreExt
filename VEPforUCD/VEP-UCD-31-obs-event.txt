@@ -14,10 +14,10 @@ Rationale:
 High energy experiences gather detections of messengers (photon or particle) as lists of events.
 An event can be associated with various measurements like time of arrival, detector position, energy, etc. 
 An event can be categorized using properties like :  
-event identifier : as meta.id;obs.event
-event grade : as meta.code.class;obs.event. 
-( defined from a detector pixel island, for instance)
-event type: as meta.code.class;obs.event 
+- event identifier : as meta.id;obs.event
+- event grade : as meta.code.class;obs.event. 
+(defined from a detector pixel island, for instance)
+- event type: as meta.code.class;obs.event 
 (defined according to some decision in the analysis pipeline)
 
 Used-in: 
