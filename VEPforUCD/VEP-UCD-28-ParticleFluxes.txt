@@ -45,7 +45,9 @@ Additional Property:(dimensionality: [M.T^-3])
 Used_in:  %todo provide an example site or file
 Rationale: phot.flux.bol is present in UCDList1.6 
 Discussion: can we use instead "phys.flux;phys.energy;em.bol" and define ?
-Decision:
+Decision:remove this suggestion until experts for this kind of quantity ask for it 
+in a detailed use-case with a file example.
+
 
 -----------------------
 New Term: phys.flux.density
@@ -59,8 +61,7 @@ Rationale:
 
 Discussion: Can we use instead "phys.flux;phys.count;em.energy / em.wl / em.freq", leading to the removal of this term of the UCD list?
 No phys.count exist in UCDList1.6
-Decision:
-
+Decision: 
 -----------------------
 New Term: phys.flux.density.sb
 Action: Addition
