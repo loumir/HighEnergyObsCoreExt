@@ -9,18 +9,18 @@
 \ivoagroup{High Energy Interest Group}
 
 \author{
-	I. Evans (SAO/CXC, \href{mailto:ievans@cfa.harvard.edu}{ievans@cfa.harvard.edu},\\
-	M. Servillat (LUX - Observatoire de Paris, \href{mailto:mathieu.servillat@obspm.fr}{mathieu.servillat@obspm.fr},\\
-	B. Khélifi (APC - Université de Paris Cité/CNRS, \href{mailto:khelifi@in2p3.fr}{khelifi@in2p3.fr}),\\
-	J. Evans (SAO/CXC, \href{mailto:janet@cfa.harvard.edu}{janet@cfa.harvard.edu}),\\
-	M. Louys (CDS and ICube - Université de Strasbourg, \href{mailto:mireille.louys@unistra.fr}{mireille.louys@unistra.fr}),\\
+	I. Evans (CXC -- Smithsonian Astrophysical Observatory, \href{mailto:ievans@cfa.harvard.edu}{ievans@cfa.harvard.edu}),\\
+	M. Servillat (LUX -- Observatoire de Paris, \href{mailto:mathieu.servillat@obspm.fr}{mathieu.servillat@obspm.fr}),\\
+	B. Kh\'elifi (APC -- Universit\'e de Paris Cit\'e/CNRS, \href{mailto:khelifi@in2p3.fr}{khelifi@in2p3.fr}),\\
+	J. Evans (CXC -- Smithsonian Astrophysical Observatory, \href{mailto:janet@cfa.harvard.edu}{janet@cfa.harvard.edu}),\\
+	M. Louys (CDS and ICube -- Universit\'e de Strasbourg, \href{mailto:mireille.louys@unistra.fr}{mireille.louys@unistra.fr}),\\
 	M. Kettenis (Joint Institute for VLBI ERIC, \href{mailto:kettenis@jive.eu}{kettenis@jive.eu}),\\
 	F. Bonnarel (IVOA, \href{mailto:francois.bonnarel@gmail.com}{francois.bonnarel@gmail.com}),\\
-	L. Michel (SSC-XMM/SVOM - Strasbourg Observatory, \href{mailto:laurent.michel@astro.unistra.fr}{laurent.michel@astro.unistra.fr}),\\
-	C. Boisson (LUX - Observatoire de Paris, \href{mailto:catherine.boisson@obspm.fr}{catherine.boisson@obspm.fr}),\\
-	M. Cresitello-Dittmar (SAO/CXC, \href{mailto:mdittmar@cfa.harvard.edu}{mdittmar@cfa.harvard.edu}),\\
-	O. Ates (LUX - ObsParis, \href{mailto:onur.ates@obspm.fr}{onur.ates@obspm.fr}),\\
-	K. Kosack (IRFU - CEA/Université Paris-Saclay, \href{mailto:karl.kosack@cea.fr}{karl.kosack@cea.fr}),\\
+	L. Michel (SSC-XMM/SVOM -- Strasbourg Observatory,\\ \href{mailto:laurent.michel@astro.unistra.fr}{\qquad laurent.michel@astro.unistra.fr}),\\
+	C. Boisson (LUX -- Observatoire de Paris, \href{mailto:catherine.boisson@obspm.fr}{catherine.boisson@obspm.fr}),\\
+	M. Cresitello-Dittmar (CXC -- Smithsonian Astrophysical \mbox{Observatory,} \href{mailto:mdittmar@cfa.harvard.edu}{\qquad mdittmar@cfa.harvard.edu}),\\
+	O. Ates (LUX -- ObsParis, \href{mailto:onur.ates@obspm.fr}{onur.ates@obspm.fr}),\\
+	K. Kosack (IRFU -- CEA/Université Paris-Saclay, \href{mailto:karl.kosack@cea.fr}{karl.kosack@cea.fr}),\\
 	J. Schnabel (ECAP, FAU Erlangen-N{\"u}rnberg, \href{mailto:jutta.schnabel@fau.de}{jutta.schnabel@fau.de}),\\
 	S. Hallmann (ECAP, FAU Erlangen-N{\"u}rnberg, \href{mailto:steffen.hallmann@fau.de}{steffen.hallmann@fau.de})
 }
@@ -140,9 +140,9 @@ The goal is to explore elements needed to reliably discover and select \gls{HEA}
 
 \gls{HEA} data include observations obtained using photon detectors covering X-ray (from $\sim$0.1 keV to $\sim$120 keV) through gamma-ray (from 120 keV up to $\gtrsim$ PeV) energies, as well as cosmic-ray and astrophysical neutrino ($\gtrsim$ GeV) detectors, or other messengers related to \gls{HEA} phenomena. The domain is now sufficiently mature to provide open data that are science-ready and work with open analysis tools ({\em e.g.\/}, CIAO \citep{2006SPIE.6270E..1VF} or Gammapy \citep{gammapy:2023}). The science output of the \gls{HEA} domain already includes advanced products such as images, cubes, spectra, and time series such as light curves and time-resolved spectra. Additional data products include fitted sky models with spatial, spectral, and/or temporal component(s), along with their confidence intervals or confidence limits, and covariance matrices.   Finally, multiple \gls{HEA} instruments produce source catalogs and surveys covering up to the full the sky, which include maps of photon or particle flux, exposure, sensitivity, and aperture-photometry likelihood profiles.
 
-Observations of the universe at the highest energies are based on techniques that are radically different compared to the UV through radio domains. \gls{HEA} observatories\footnote{For example, Chandra, XMM-Newton, Fermi, H.E.S.S., MAGIC, VERITAS, HAWC, LHAASO, IceCube, ANTARES, Auger and soon CTAO and KM3NeT, SWGO.} are generally designed to detect particles ({\em e.g.\/}, individual photons, cosmic-rays, or neutrinos) with the ability to estimate multiple observables for those particles. These detection techniques all rely on {\em event counting\/}\footnote{As opposed to signal integrating ({\em e.g.\/}, using a detector that accumulates the total photon signal during an exposure).}, where an event has some probability of being due to the interaction of a particle from an astrophysical source with the detectors, but also has some probability of being from instrumental or background effects. The data corresponding to an event are first an instrumental signal, which is then calibrated and processed to estimate physical quantities such as a time of arrival, point-of-origin on the sky, and an energy proxy associated with the event. Several other intermediate and qualifying characteristics may be associated with a detected event, depending on the detection technique. The ensemble of events detected over a given time interval and spatial field-of-view is referred to as an {\em event list\/}, which we designate an {\bf event-list} in this document.
+Observations of the universe at the highest energies are based on techniques that are radically different compared to the UV through radio domains. \gls{HEA} observatories\footnote{For example, Chandra, XMM-Newton, Fermi, H.E.S.S., MAGIC, VERITAS, HAWC, LHAASO, IceCube, ANTARES, Auger, and soon CTAO, KM3NeT, and SWGO.} are generally designed to detect particles ({\em e.g.\/}, individual photons, cosmic-rays, or neutrinos) with the ability to estimate multiple observables for those particles. These detection techniques all rely on {\em event counting\/}\footnote{As opposed to signal integrating ({\em e.g.\/}, using a detector that accumulates the total photon signal during an exposure).}, where an event has some probability of being due to the interaction of a particle from an astrophysical source with the detectors, but also has some probability of being from instrumental or background effects. The data corresponding to an event are first an instrumental signal, which is then calibrated and processed to estimate physical quantities such as a time of arrival, point-of-origin on the sky, and an energy proxy associated with the event. Several other intermediate and qualifying characteristics may be associated with a detected event, depending on the detection technique. The ensemble of events detected over a given time interval and spatial field-of-view is referred to as an {\em event list\/}, which we designate an {\bf event-list} in this document.
 
-Though {\bf event-list}s {\em may\/} include estimators for calibrated physical values, they typically still have to be corrected for the photometric, spectral, spatial, and/or temporal responses of the telescope and detector combination to yield scientifically interpretable information. The mappings between physical measurements of the source properties and the observables are called Instrument Response Functions (\glspl{IRF}\footnote{We try to avoid using the term \gls{IRF} in a normative sense since historical usage across the broad \gls{HEA} community (and from facility to facility) varies. In some cases, \gls{IRF} has been used to mean specifically the X-ray product of the \gls{ARF} and \gls{RMF}, whereas in other cases \gls{IRF} has been used more generally to mean any instrumental response function regardless of type.}).  Some \glspl{IRF} are probabilistic in nature\footnote{For example, the energy matrix is a probability density function.}, and in addition may depend on the set of events selected for analysis by the end user.  They are usually not invertible, so methods such as forward-folding fitting (using source models with any combination of spectral, spatial, temporal, and/or polarization components that are estimated) are needed to estimate physical properties, such as the true flux of particles from a source arriving at the instrument, given the measured observable quantities. The \glspl{IRF} generally evolve over time with the instrument and observation characteristics, and are usually defined for a specific time interval and may be decomposed into a standard set of independent components (see \S~3.1.5 of \citep{2024ivoa.note.heig}), such as the spatial point-spread function or the energy-migration matrix or different messenger particle types, where each component may be stored or computed separately.  Since both \glspl{IRF} and {\bf event-list}s are required to analyze \gls{HEA} data, some \gls{IVOA} standards must be modified in order to expose both of them via the \gls{VO}.
+Though {\bf event-list}s {\em may\/} include estimators for calibrated physical values, they typically still have to be corrected for the photometric, spectral, spatial, and/or temporal responses of the telescope and detector combination to yield scientifically interpretable information. The mappings between physical measurements of the source properties and the observables are called Instrument Response Functions (\glspl{IRF}\footnote{We try to avoid using the term \gls{IRF} in a normative sense since historical usage across the broad \gls{HEA} community (and from facility to facility) varies. In some cases, \gls{IRF} has been used to mean specifically the product of the \gls{ARF} and \gls{RMF}, whereas in other cases \gls{IRF} has been used more generally to mean any instrumental response function regardless of type.}).  Some \glspl{IRF} are probabilistic in nature\footnote{For example, the energy matrix is a probability density function.}, and in addition may depend on the set of events selected for analysis by the end user.  They are usually not invertible, so methods such as forward-folding fitting (using source models with any combination of spectral, spatial, temporal, and/or polarization components that are estimated) are needed to estimate physical properties, such as the true flux of particles from a source arriving at the instrument, given the measured observable quantities. The \glspl{IRF} generally evolve over time with the instrument and observation characteristics, and are usually defined for a specific time interval and may be decomposed into a standard set of independent components (see \S~3.1.5 of \citep{2024ivoa.note.heig}), such as the spatial point-spread function or the energy-migration matrix or different messenger particle types, where each component may be stored or computed separately.  Since both \glspl{IRF} and {\bf event-list}s are required to analyze \gls{HEA} data, some \gls{IVOA} standards must be modified in order to expose both of them via the \gls{VO}.
 
 In the following, the current ObsCore standard will be discussed in \S~\ref{sec:obscore}, focusing on attributes that need to be modified. Then, we propose the creation of a \gls{HEA} extension of ObsCore in \S~\ref{sec:obscoreext}, as some attributes are very specific to our domain. In these two sections, the discussion focuses on the attribute definitions rather on the attribute values. In \S~\ref{sec:voc}, enhancement of vocabulary is proposed for some ObsCore attributes, DataLink semantics, UCDs, and MIME-types.
 
@@ -231,7 +231,7 @@ We propose that {\em s\_calib\_status\/} encode the calibration status of an {\b
 
 Under the (reasonable) assumption that an end-user searching for {\bf event-bundle} datasets is typically querying based on the properties of the primary {\bf event-list}, we suggest that those values also be used for the {\bf event-bundle}.  However, the data provider should ultimately decide which value best describes their {\bf event-bundle} dataset.
 
-For dataset types that do not encode sky coordinates or observations without dedicated spacial axes like non-pointing observatories, we suggest setting this value to ``NULL''.
+For dataset types that do not encode sky coordinates or observations without dedicated spatial axes like non-pointing observatories, we suggest setting this value to ``NULL''.
 
 \subsection{{\em t\_calib\_status}}
 
@@ -253,7 +253,7 @@ For dataset types that do not encode spectral coordinates, we suggest setting th
 
 For an {\bf event-list}, we can consider that all measures stored in column values are observables. This is {\em the\/} fundamental difference between \gls{HEA} {\bf event-list}s and typical pixelated datasets. The current ObsCore Recommendation suggests that {\em o\_ucd\/} be set to ``NULL'' for event lists. However this significantly hampers data discovery for \gls{HEA} datasets. Since the data content of {\bf event-list}s may vary significantly from facility to facility, meaningful discovery of \gls{HEA} datasets {\em requires\/} the user be able to query the UCDs of the set of observables included in an {\bf event-list}.
 
-A natural way of doing this that is consistent with current usage would be to extend {\em o\_ucd\/} to allow specification of {\em multiple\/} observables for {\bf event-list}s (and {\bf event-bundle}s), for example, {\em o\_ucd\/} = {\em 'pos.eq;time;instr.event.pulse\-Height'\/}.
+A natural way of doing this that is consistent with current usage would be to extend {\em o\_ucd\/} to allow specification of {\em multiple\/} observables for {\bf event-list}s (and {\bf event-bundle}s), for example, {\em o\_ucd\/} = {\em `pos.eq\#time\#instr.event.pulse\-Height'\/}.  We propose using the {\em hash symbol\/} (`\#') to separate UCDs for the multiple observables to distinguish from the case where multiple UCD words separated by semicolons may be needed to define the UCD for a single observable.  This follows a suggestion from the EPN-TAP Recommendation \citep{2022ivoa.spec.0822E} to use the hash symbol as a separator.  Doing so can simplify ADQL queries since ADQL includes a {\tt ivo\_hashlist\_has} IVOA-standardized user defined function that can be used to validate if a particular UCD is included.  One can also perform an ADQL query similar to ``o\_ucd LIKE `\%string\%'\null'' if all that is desired is to verify the presence of a specific UCD `string'.
 
 We note that extending {\em o\_ucd\/} to allow specification of multiple observables would require similar adjustments to the other observable axis attributes {\em o\_unit\/}, {\em o\_calib\_status\/}, and {\em o\_stat\_err\/}.
 
@@ -290,7 +290,7 @@ We recognize that performing such queries will require enhancements to ADQL, but
 
 \subsection{{\em energy\_min\/}/{\em energy\_max\/}}
 
-The existing attributes {\em em\_min\/} and {\em em\_max\/} that define the coverage of the spectral axis (defined as wavelength expressed in units of m) are not user friendly for \gls{HEA} where datasets are generally selected according to an energy range ({\em i.e.\/}, inverse wavelength) in units of eV (or scaled units of eV, for example keV, MeV, GeV, TeV, PeV). Unlike the radio domain where $\lambda = c/\nu$, where $c$ is an almost universally remembered physical constant, the conversion $\lambda = hc/E$ is not simple for the user to express. As the spectral range covered by \gls{HEA} data is many decades larger than for other wavebands, the accurate numerical representations of typical \gls{HEA} spectral ranges as {\em em\_min\/}/{\em em\_max\/} requires quantities with many digits of precision and exponents ranging from $\sim\!10^{-5}$--$10^{-22}$, and are misleading when used for energy ranges of massive particles.  Since specification of the spectral range is largely fundamental to data discovery in the \gls{HEA} regime, we propose to add attributes {\em energy\_min\/} and {\em energy\_max\/} that specify the minimum and maximum spectral range values in units of eV\null. Note that the sense of these attributes is {\em opposite\/} that of {\em em\_min\/} and {\em em\_max\/} because of the inverse wavelength relationship between energy and wavelength, so numerical comparisons must be transposed ({\em e.g.\/}, $E>E_{\rm thresh}$ becomes $\lambda<hc/E_{\rm thresh}$).  (An alternate approach would be to add attributes {\em em\_min\_energy\/} and {\em em\_max\_energy\/} that represent the energies corresponding to {\em em\_min\/} and {\em em\_max\/} in units of eV\null. This is less desirable since queries on an energy would need to be specified as {\em em\_max\_energy\/}${}\leq E <{}${\em em\_min\_energy\/}, which is likely confusing. It is recommended to not to use this approach when describing massive particles including neutrinos.)
+The existing attributes {\em em\_min\/} and {\em em\_max\/} that define the coverage of the spectral axis (defined as wavelength expressed in units of m) are not user friendly for \gls{HEA} where datasets are generally selected according to an energy range ({\em i.e.\/}, inverse wavelength) in units of eV (or scaled units of eV, for example keV, MeV, GeV, TeV, PeV). Unlike the radio domain where $\lambda = c/\nu$, where $c$ is an almost universally remembered physical constant, the conversion $\lambda = hc/E$ is not simple for the user to express. As the spectral range covered by \gls{HEA} data is many decades larger than for other wavebands, the accurate numerical representations of typical \gls{HEA} spectral ranges as {\em em\_min\/}/{\em em\_max\/} requires quantities with many digits of precision and exponents ranging from $\sim\!10^{-5}$--$10^{-22}$, and are misleading when used for energy ranges of massive particles.  Since specification of the spectral range is largely fundamental to data discovery in the \gls{HEA} regime, we propose to add attributes {\em energy\_min\/} and {\em energy\_max\/} that specify the minimum and maximum spectral range values in units of eV\null. Note that the sense of these attributes is {\em opposite\/} that of {\em em\_min\/} and {\em em\_max\/} because of the inverse wavelength relationship between energy and wavelength, so numerical comparisons must be transposed ({\em e.g.\/}, $E>E_{\rm thresh}$ becomes $\lambda<hc/E_{\rm thresh}$).  (An alternate approach would be to add attributes {\em em\_min\_energy\/} and {\em em\_max\_energy\/} that represent the energies corresponding to {\em em\_min\/} and {\em em\_max\/} in units of eV\null. This is less desirable since queries on an energy would need to be specified as {\em em\_max\_energy\/}${}\leq E <{}${\em em\_min\_energy\/}, which is likely confusing. This approach is not recommended when describing massive particles, including neutrinos.)
 
 The value of $hc$ used to compute $\lambda = hc/E$ is $1.239841984332\times10^{-6}\rm \,eV\,m$ based on the 2022 CODATA list of internationally recommended Fundamental Physical Constants\footnote{\url{https://physics.nist.gov/cuu/Constants/index.html}} ($c = 299\,792\,458\rm \,m\,s^{-1}$ (exact); $h = 6.626\,070\,15\times10^{-34}\rm \,J\,Hz^{-1}$ (exact); $e = 1.602\,176\,634\times10^{-19}\rm \,C$ (exact)). 
 
@@ -301,18 +301,18 @@ Many \gls{HEA} instruments may be configured using multiple observing modes and 
 We propose to add an optional attribute {\em obs\_mode\/} that allows the data provider to specify the observation mode for an observation.  Constraints on observation mode can provide a simple way to discover data sets for a specific facility/instrument combination.  We note that permissible {\em obs\_mode\/} values will vary from facility to facility and from instrument to instrument.
 
 
-\subsection{{\em tracking\_type}}
+\subsection{{\em tracking\_mode}}
 
 Since most \gls{HEA} facilities record the arrival times of particle events, data accumulated when the telescope pointing moves or rotates relative to the sky during an observation can be located on the sky.  The way in which the telescope moves may impact how the data should be processed, especially for observations in which multiple different astrophysical sources may be present within the field of view ({\em e.g.\/}, a solar system target moving relative to the fixed celestial background).  {\em Tracking\/} is defined by the normal motion of the optical axis of the telescope during an observation: fixed to a celestial coordinate (the most common case for ground telescopes with movable mounts, or those in space),  fixed to a horizontal coordinate (also called a ``drift scan'', and the standard case for telescopes without movable mounts),  or fixed to a solar system body ({\em e.g.\/}, the moon, a planet, or a comet) position.
 
-We propose to add an optional attribute {\em tracking\_type\/} to distinguish these modes.  Constraints on {\em tracking\_type\/} can provide a simple way to discover data sets for a specific facility/instrument combination.  We propose predefined {\em tracking\_type\/} values for \gls{HEA} data include the following:
+We propose to add an optional attribute {\em tracking\_mode\/} to distinguish these modes.  Constraints on {\em tracking\_mode\/} can provide a simple way to discover data sets for a specific facility/instrument combination.  We propose predefined {\em tracking\_mode\/} values for \gls{HEA} data include the following:
 \begin{itemize}
 	\item \texttt{sidereal}: observations pointed at a fixed celestial target location on the sky;
 	\item \texttt{fixed-az-el-transit}: observations fixed at a given elevation and azimuth;
 	\item \texttt{solar-system-object-tracking}: observations pointed at a moving target, like the moon or other solar system bodies;
 	\item \texttt{none}: observations with no telescope tracking.
 \end{itemize}
-We intend that the name of this attribute harmonizes with the name of the similar attribute in the proposed ``IVOA Obscore Extension for Radio Data''\footnote{\url{https://github.com/ivoa-std/ObsCoreExtensionForRadioData}.} and note that the first three predefined values for {\em tracking\_type\/} also harmonize with that proposal.  The \texttt{none} {\em tracking\_type\/} describes observations obtained while the telescope is not tracking ({\em e.g.\/}, observations obtained while the telescope is slewing). We further note that permissible {\em tracking\_type\/} values may vary from facility to facility and from instrument to instrument and additional values beyond the predefined values are possible. The attribute is not expected to be used for non-pointing instruments.
+We intend that the name of this attribute harmonizes with the name of the similar attribute in the proposed ``IVOA Obscore Extension for Radio Data''\footnote{\url{https://github.com/ivoa-std/ObsCoreExtensionForRadioData}.} and note that the first three predefined values for {\em tracking\_mode\/} also harmonize with that proposal.  The \texttt{none} {\em tracking\_mode\/} describes observations obtained while the telescope is not tracking ({\em e.g.\/}, observations obtained while the telescope is slewing). We further note that permissible {\em tracking\_mode\/} values may vary from facility to facility and from instrument to instrument and additional values beyond the predefined values are possible. This attribute is not expected to be used for non-pointing instruments.
 
 \subsection{{\em scan\_mode}}
 
@@ -325,7 +325,7 @@ Some \gls{HEA} facilities can obtain observations using different spatial scan m
 	\item \texttt{on-the-fly-cross-map}: observations along parallel directions ({\em e.g.\/}, a wobble observation for \glspl{IACT});
 	\item \texttt{slew} : observations taken while the telescope is slewing.	
 \end{itemize}
-We intend that the name of this attribute harmonizes with the name of the similar attribute in the proposed ``IVOA Obscore Extension for Radio Data''\footnote{\url{https://github.com/ivoa-std/ObsCoreExtensionForRadioData}.} and note that the first five predefined values for {\em scan\_mode\/} also harmonize with that proposal.  The \texttt{slew} {\em scan\_mode\/} describes observations obtained while the telescope is slewing ({\em i.e.\/}, where the field of view moves with arbitrary direction and speed while the telescope is repositioning), which is a mode used extensively by some satellite-based \gls{HEA} facilities.  We further note that permissible {\em scan\_mode\/} values may vary from facility to facility and from instrument to instrument and additional values beyond the predefined values are possible. The attribute is not expected to be used for non-pointing instruments.
+We intend that the name of this attribute harmonizes with the name of the similar attribute in the proposed ``IVOA Obscore Extension for Radio Data''\footnote{\url{https://github.com/ivoa-std/ObsCoreExtensionForRadioData}.} and note that the first five predefined values for {\em scan\_mode\/} also harmonize with that proposal.  The \texttt{slew} {\em scan\_mode\/} describes observations obtained while the telescope is slewing ({\em i.e.\/}, where the field of view moves with arbitrary direction and speed while the telescope is repositioning), which is a mode used extensively by some satellite-based \gls{HEA} facilities.  We further note that permissible {\em scan\_mode\/} values may vary from facility to facility and from instrument to instrument and additional values beyond the predefined values are possible. This attribute is not expected to be used for non-pointing instruments.
 
 
 \subsection{{\em pointing\_mode}}
@@ -336,7 +336,7 @@ Some \gls{HEA} facilities can obtain observations using multiple telescope simul
 	\item \texttt{convergent[-ang]}: the telescope pointings are convergent;
 	\item \texttt{divergent[-ang]}: the telescope pointings are divergent.
 \end{itemize}
-The optional suffix ``[-ang]'' specifies a reference angle for a convergent or divergent pointing, for example ``convergent-5d''.  We note that permissible {\em pointing\_mode\/} values may vary from facility to facility and from instrument to instrument. The attribute is not expected to be used for non-pointing instruments.
+The optional suffix ``[-ang]'' specifies a reference angle for a convergent or divergent pointing, for example ``convergent-5d''.  We note that permissible {\em pointing\_mode\/} values may vary from facility to facility and from instrument to instrument. This attribute is not expected to be used for non-pointing instruments.
 
 \subsection{{\em analysis\_mode}}
 
@@ -351,6 +351,23 @@ We propose to add an optional attribute {\bf analysis\_mode} that allows the dat
 Some \gls{HEA} instruments allow particle events to be partitioned into separate subsets based on some set of defined criteria.  This is typically based on a data analysis quality associated with the reconstruction and  discrimination of the events, and analyses can flag each event by a quality label, effectively partitioning the dataset into strictly disjoint event subsets. For each subset, a set of associated {\bf response-function}s can be separately computed\footnote{For example, the Fermi-LAT collaboration produces separate \glspl{IRF} for each event type; see \url{https://fermi.gsfc.nasa.gov/ssc/data/analysis/documentation/Cicerone/Cicerone_LAT_IRFs/IRF_overview.html}.}.
 
 We propose to add an optional attribute {\em event\_type\/} that specifies the data quality flag for an observation. This attribute will allow the data provider to split the event list into several event lists labelled by an unique {\em event\_type\/} for a given observation, and if appropriate to distribute their associated \glspl{IRF}. Constraints on event type can provide a simple way to discover data sets for a specific facility/instrument combination and to reduce the downloaded data volume. We note that permissible {\em event\_type\/} values may vary from facility to facility and from instrument to instrument.
+
+
+\subsection{{\em messenger}}
+\label{sec:messenger}
+
+While many \gls{HEA} facilities detect photons ({\em e.g.\/}, most space-based X-ray and gamma-ray facilities), other facilities can detect alternate messenger particles, such as cosmic-rays, neutrinos, or massive particles.  The end user will therefore need the ability to select the messenger when querying for data products using ObsCore.
+
+We propose to add an optional attribute {\em messenger\/} that specifies the messenger type for an observation.  Constraints on {\em messenger\/} can provide a simple way to discover data sets for a specific messenger.  While the entries in the IVOA Messengers Vocabulary\footnote{\url{https://www.ivoa.net/rdf/messenger}} provide a useful starting point for populating this attribute, we propose that the predefined {\em messenger\/} values for \gls{HEA} data include at least the following:
+\begin{itemize}
+	\item \texttt{cosmic-ray}: the messenger is a cosmic-ray;
+	\item \texttt{muon}: the messenger is a muon;
+	\item \texttt{neutrino}: the messenger is a neutrino (any type);
+	\item \texttt{photon}: the messenger is a photon;
+	\item \texttt{proton}: the messenger is a proton or anti-proton;
+	\item \texttt{pdgid-{\em nn\/}}: the messenger is a particle whose PDG ID\footnote{Particle Data Group Identifier, see \url{https://www.phy.bnl.gov/twister/bee/particles/}} is {\em nn\/}.
+\end{itemize}
+The value ``pdgid-{\em nn\/}'' allows a messenger particle not listed in the table to be specified by reporting the particle's Particle Data Group Identifier as {\em nn\/}.  For example, a muon $\mu^{-}$ may be specified as ``pdgid-13''.   We note that permissible {\em messenger\/} values will vary from facility to facility and from instrument to instrument.
 
 \subsection{Additional Columns}
 
@@ -506,7 +523,7 @@ For imaging X-ray instruments (especially those based on CCD detectors), detecte
 
 For many X-ray and gamma-ray instruments, the signal observed in a given detector spectral channel is the result of event counting and would typically be recorded as a Pulse Height Amplitude (PHA), or perhaps a Pulse Invariant (PI) value that is calculated from PHA by applying an appropriate gain calibration.  The PHA (or PI) can be related to the incident particle energy by applying the appropriate {\bf response-function}, and higher data calibration level products may replace or augment these values with quantities such as energy, or perhaps particle or energy flux.
 
-There is currently no UCD defined for a raw pulse height amplitude measure like PHA (or PI). PHA is such an important quantity to \gls{HEA} datasets that we propose adding a new UCD {\em instr.event.pulseHeight\/} for these raw data values.  We note that the background signal (both of instrumental and cosmological origin) may be significant for many \gls{HEA} detectors and so the detected events may be unrelated to any observed source on the sky. For Cherenkov neutrino detectors, this quantity might refer to the number of observed photon hits from secondary particle photon generation.
+There is currently no UCD defined for a raw pulse height amplitude measure like PHA (or PI). PHA is such an important quantity to \gls{HEA} datasets that we propose adding a new UCD {\em instr.event.pulseHeight\/} for these raw data values.  We note that the background signal (both of instrumental and cosmological origin) may be significant for many \gls{HEA} detectors and so the detected events may be unrelated to any observed source on the sky.  For Cherenkov neutrino detectors, this quantity might refer to the number of observed photon hits from secondary particle photon generation.
 
 One previously proposed solution suggested using the combination of existing UCDs {\em src.var.amplitude;src.var.pulse;stat.uncalib\/} for PHA, but this is not appropriate since the connection to {\em src\/} (``observed source viewed on the sky'') is misleading and {\em src.var.amplitude\/} is defined as the ``amplitude of variation'' of the source which is a completely separate concept from an astronomical perspective.
 
@@ -516,7 +533,9 @@ For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \
 
 \subsubsection{Physical Quantities}
 
-The messengers for \gls{HEA} observations may include particles other than the ones currently described in the UCD list.  Because some instruments can now distinguish electrons from positrons\footnote{For example, the Fermi-LAT instrument.}, as well antiprotons from protons\footnote{For example, the AMS-2 experiment.}, we also propose to add {\em phys.particle.positron\/} and {\em phys.particle.antiproton\/}, as well as {\em phys.particle.cosmicray\/} and unify them all under the {\em phys.particle\/} UCD hierarchy. For particle detectors, a wide range of different particles might have to be described. As is customary in particle physics, we propose to facilitate the use of the Particle Data Group ID\footnote{see e.g. this \href{https://www.phy.bnl.gov/twister/bee/particles/}{listing}} as reference for any particle, describing e.g. $\nu_{\tau}$ and $\bar{\nu}_{\tau}$ as {\em phys.particle.pdgid16\/} and {\em phys.particle.pdgid18\/} respectively.
+The messengers for \gls{HEA} observations may include particles other than the ones currently described in the UCD list.  Because some instruments can now distinguish electrons from positrons\footnote{For example, the Fermi-LAT instrument.}, as well antiprotons from protons\footnote{For example, the AMS-2 experiment.}, we also propose to add {\em phys.particle.positron\/} and {\em phys.particle.antiproton\/}, as well as {\em phys.particle.cosmicray\/} and unify them all under the {\em phys.particle\/} UCD hierarchy.
+
+For particle detectors, a wide range of different particles might have to be described. As is customary in particle physics, we propose to facilitate the use of the Particle Data Group Identifier\footnote{see \url{https://www.phy.bnl.gov/twister/bee/particles/}} as reference for any particle, describing {\em e.g.\/}, $\nu_{\tau}$ and $\bar{\nu}_{\tau}$ as {\em phys.particle.pdgid16\/} and {\em phys.particle.pdgid18\/} respectively.
 
 One should note that electrons are denoted by the UCD {\em phys.electron\/} in the current version of the UCD list \citep{2024ivoa.spec.1218C} and are inappropriately not grouped under the {\em phys.particle\/} hierarchy.  This causes some inconsistencies that could be solved by marking {\em phys.electron\/} (and {\em phys.electron.degen\/}) as obsolete or not recommended, and adding the term  {\em phys.particle.electron\/} to the UCD list.
 
@@ -524,7 +543,7 @@ Finally, we propose to add the most commonly used astronomical messenger to the 
 
 \subsubsection{Statistical Parameters}
 
-Since statistical lower and upper limits play a significant role in \gls{HEA} data analysis, we propose adding new UCDs {\em stat.lowerlimit\/} and {\em stat.upperlimit\/} to explicitly identify data quantities as lower or upper limits.  We suggest that the existing UCDs {\em stat.min\/} and {\em stat.max\/} be restricted to meaning the minimum and maximum statistic, rather than the current definitions ``Minimum or lowest limit'' and ``Maximum or upper limit'', which blend statistical confidence intervals and limits into a  single UCD\null.  A specification of a confidence level is necessary for the user to interpret both confidence intervals and lower/upper limits meaningfully, and this level can be described by the existing UCD {\em stat.confidenceLevel\/}.
+Since statistical lower and upper limits play a significant role in \gls{HEA} data analysis, we propose adding new UCDs {\em stat.lowerlimit\/} and {\em stat.upperlimit\/} to explicitly identify data quantities as lower or upper limits.  We suggest that the existing UCDs {\em stat.min\/} and {\em stat.max\/} be restricted to meaning the minimum and maximum statistic, rather than the current definitions ``Minimum or lowest limit'' and ``Maximum or upper limit'', which blend statistical confidence intervals and limits into a  single UCD\null.  A specification of a confidence level is necessary for the user to interpret both confidence intervals and lower/upper limits meaningfully, and this level can be described by the existing UCD {\em stat.confidenceLevel\/}, providing we change the syntax code of the latter from `P' to `Q' so that the UCD can be attached as a secondary word to existing UCD {\em stat.error\/} or the proposed UCDs {\em stat.error.negative\/}, {\em stat.error.positive\/}, {\em stat.lowerlimit\/}, and {\em stat.upperlimit\/}.
 
 The shape of any statistical distribution is an essential quantity for interpreting the meaning of any statistical properties.  Too often a Gaussian distribution or a distribution that can be characterized by a simple set of moments ({\em e.g.\/}, mean, variance, skewness, kurtosis) are assumed, but in the extreme Poisson regime common in \gls{HEA} these assumptions are often invalid.  We propose adding a UCD {\em stat.distribution\/} to identify a quantity that defines the distribution of a statistical variable such as  a likelihood profile.
 
@@ -561,6 +580,7 @@ S & {\em phys.particle.cosmicray\/} & Related to cosmic rays particles  \cr
 S & {\em phys.particle.electron\/} & Related to electron  \cr
 S & {\em phys.particle.photon\/} & Related to photon  \cr
 S & {\em phys.particle.positron\/} & Related to positron  \cr
+S & {\em phys.particle.pdgid\/} & Particle Data Group Identifier \cr                                                                  
 S & {\em phys.particle.pdgidXX\/} & Related to a particle with PDG ID XX  \cr
 P & {\em stat.distribution\/} & Type or shape of statistical distribution  \cr
 P & {\em stat.error.negative\/} & Negative statistical error  \cr
@@ -577,7 +597,7 @@ P & {\em stat.upperlimit\/}  & Upper limit \cr
  \textbf{}  &  \textbf{UCD word} & \textbf{Description}\cr
 \sptablerule
 S & {\em em.gamma.hard\/} & Hard gamma ray (500 keV -- 100 MeV)  \cr
-P & {\em stat.confidenceLevel\/} & Level of confidence for a statistical measure, detection, or classification process \cr
+Q & {\em stat.confidenceLevel\/} & Level of confidence for a statistical measure, detection, or classification process \cr
 E & {\em phot.count\/} & Count flux (dimensionality: $\rm [L^{-2}\,T^{-1}]$)  \cr
 E & {\em phot.fluence\/} & Radiant photon energy received by a surface per unit area or irradiance of a surface integrated over time of irradiation (dimensionality: $\rm [L^{-2}]$)  \cr
 Q & {\em phot.flux.bol\/} & Bolometric flux (dimensionality: $\rm [M\,T^{-3}]$)  \cr
@@ -604,42 +624,47 @@ Many \gls{HEA} FITS format data products will comply with existing MIME-types di
 \section{Proposed ivoa.obscore\_hea Table Attributes}\label{sec:ibscoreext}
 
 This section summarizes the proposal for the \gls{HEA} extension of ObsCore.  We use the term {\em ivoa.obscore\_hea\/} to described the extension here and in Appendix~\ref{sec:uc}.
-% start mireille ucd update
 
-\begin{longtable}{ | m{2.5cm} | m{4em} | m{3em} | m{3em} | m{6cm} | m{2.3em} |}
+\begin{landscape}
+\begin{center}
+%start mireille ucd update
+\begin{longtable}{ | m{0.15\linewidth} | m{0.23\linewidth} | m{0.07\linewidth} | m{0.07\linewidth} | m{0.4\linewidth} | m{0.05\linewidth} |}
 \hline
 
 {\centering \bf Column Name}     &{\centering \bf UCD} &{\centering \bf Unit} &{\centering \bf Type} &{\centering \bf Description} &{\centering \bf MAN}\\
 \hline
- ev\_xel & \ucd{meta.number;obs.event} &  unitless & int & {\footnotesize Number of events in an event\_list }& NO \\
+ ev\_xel & \ucd{meta.number;obs.event} &  unitless & int & {Number of events in an event\_list }& NO \\
 \hline
- s\_ref\_energy &  \ucd{meta.ref;em.energy;pos} & eV & float & {\footnotesize Energy at which the ObsCore spatial characterisation attributes s\_fov , s\_region, s\_resolution are defined} & NO \\
+ s\_ref\_energy &  \ucd{meta.ref;em.energy;pos} & eV & float & {Energy at which the ObsCore spatial characterization attributes s\_fov , s\_region, s\_resolution are defined} & NO \\
 \hline
- em\_ref\_energy  & \ucd{meta.ref;em.energy;em} & eV & float & {\footnotesize Energy at which the ObsCore spatial characterisation attributes em\_res\_power, em\_resolution are defined} & NO \\
+ em\_ref\_energy  & \ucd{meta.ref;em.energy;em} & eV & float & {Energy at which the ObsCore spectral characterization attributes em\_res\_power, em\_resolution are defined} & NO \\
 \hline
- s\_ref\_oaa & \ucd{pos.posAng;instr.offset;pos} & deg & float & {\footnotesize Off-axis angle (i.e., the angular separation of the target or source from the telescope optical axis) at which the ObsCore spatial characterisation attributes s\_fov , s\_region, s\_resolution are defined} & NO \\
+ s\_ref\_oaa & \ucd{pos.posAng;instr.offset;pos} & deg & float & {Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spatial characterization attributes s\_fov , s\_region, s\_resolution are defined} & NO \\
 \hline
- em\_ref\_oaa & \ucd{pos.posAng;instr.offset;em} & deg & float & {\footnotesize Off-axis angle (i.e., the angular separation of the target or source from the telescope optical axis) at which the ObsCore spectral characterisation attributes em\_res\_power, em\_resolution are defined} & NO \\
+ em\_ref\_oaa & \ucd{pos.posAng;instr.offset;em} & deg & float & {Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spectral characterization attributes em\_res\_power, em\_resolution are defined} & NO \\
 \hline
-  t\_intervals & \ucd{?? }& unitless & TMOC & {\footnotesize List of observation intervals or stable/good time intervals describing the exact observation time coverage} & NO \\
+  t\_intervals & \ucd{?? }& unitless & TMOC & {List of observation intervals or stable/good time intervals describing the exact observation time coverage} & NO \\
 \hline
-  energy\_min & \ucd{em.energy;stat.min} & float & eV &  {\footnotesize Energy associated to the Obscore attribute em\_max, describing the minimal energy of the dataset} & NO \\
+  energy\_min & \ucd{em.energy;stat.min} & float & eV &  {Energy associated to the ObCcore attribute em\_max, describing the minimal energy of the dataset} & NO \\
 \hline
-  energy\_max & \ucd{em.energy;stat.max} & float & eV & {\footnotesize Energy associated to the Obscore attribute em\_min, describing the maximal energy of the dataset} & NO \\
+  energy\_max & \ucd{em.energy;stat.max} & float & eV & {Energy associated to the ObsCore attribute em\_min, describing the maximal energy of the dataset} & NO \\
 \hline
-  obs\_mode & \ucd{meta.code;obs.param} & unitless & string  &{\footnotesize Observation mode of the observation (e.g. TBU)} & NO \\
+  obs\_mode & \ucd{meta.code;obs.param} & unitless & string  &{Observation mode of the observation ({\em e.g.\/}, TBU)} & NO \\
 \hline
-  tracking\_mode & \ucd{meta.code;obs.param} & unitless & string & {\footnotesize Tracking mode of an observation (e.g., sidereal rate, moving target [solar system] tracking, drift scans)}  & NO \\
+  tracking\_mode & \ucd{meta.code;obs.param} & unitless & string & {Tracking mode of an observation ({\em e.g.\/}, sidereal rate, moving target [solar system] tracking, drift scans)}  & NO \\
 \hline
-  analysis\_mode & \ucd{meta.code;obs.param} & unitless & string &{\footnotesize Data reduction/analysis mode}& NO \\
+  analysis\_mode & \ucd{meta.code;obs.param} & unitless & string &{Data reduction/analysis mode}& NO \\
 \hline
-  event\_type & \ucd{meta.code.qual;obs.event} & unitless & string &{\footnotesize Data quality flag of the events (e.g. ``good psf'', ``good rejection'', ``Nhit (100,200)''} & NO \\
+  event\_type & \ucd{meta.code.qual;obs.event} & unitless & string &{Data quality flag of the events ({\em e.g.\/}, ``good psf'', ``good rejection'', ``Nhit (100,200)''} & NO \\
+\hline
+  messenger & \ucd{??} & unitless & string &{Messenger particle type ({\em e.g.\/}, ``photon'', ``cosmic-ray'', ``neutrino'', ``pdgid-13'')} & NO \\
 \hline
 \end{longtable}
 %\end{center}
-
-
 % end mireille ucd update 
+\end{center}
+\end{landscape}
+
 %\begin{landscape}
 %\begin{center}
 %%\begin{longtable}{ | m{2.5cm} | m{3em} | m{3em} | m{3em} | m{6cm} | m{2.3em} |}

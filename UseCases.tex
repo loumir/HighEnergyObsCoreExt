@@ -184,26 +184,28 @@ The obs\_publisher\_did of the single discovered event-list is repeated in the I
 Mandatory FIELDS service\_def and error\_messsage are omitted because they are empty
 
 \begin{landscape}
-\begin{longtable}{|p{2.4cm}|p{3.3cm}|p{2.0cm}|p{2.4cm}|p{2.3cm}|p{2.4cm}|p{2.7cm}|}
-\sptablerule
+\begin{center}
+\begin{longtable}{|p{0.15\linewidth}|p{0.2\linewidth}|p{0.08\linewidth}|p{0.22\linewidth}|p{0.1\linewidth}|p{0.12\linewidth}|p{0.13\linewidth}|}
+\hline%\sptablerule
 \textbf{ID}  &\textbf{\footnotesize access\_url}  &\textbf{\footnotesize semantics}&\textbf{\footnotesize description} &\textbf{\footnotesize content\_type} &\textbf{\footnotesize content\_length} &\textbf{\footnotesize content\_qualifier}\cr
-\sptablerule
-{\tiny ivo://xxx/yyy/zzz\#ttt} & {\tiny https://xxx.yyy/zzz/ttt1.ext1} & \#this & {\footnotesize event-list}  {\tiny ivo://xxx/yyy/zzz\#ttt} & text/xml & 1000000 & event-list \cr
-\sptablerule
-{\tiny ivo://xxx/yyy/zzz\#ttt} & {\tiny https://xxx.yyy/zzz/ttt2.ext2} & \#calibration & {\footnotesize Effective AREA of the telescope/instrument associated with the event-list}  {\tiny ivo://xxx/yyy/zzz\#ttt} & text/csv & 10000 & aeff \cr
-\sptablerule
-{\tiny ivo://xxx/yyy/zzz\#ttt} & {\tiny https://xxx.yyy/zzz/ttt3.ext3} & \#calibration & {\footnotesize Energy dispersion of event-list}  {\tiny ivo://xxx/yyy/zzz\#ttt} & text/csv & 10000 & edisp \cr
-\sptablerule
-{\tiny ivo://xxx/yyy/zzz\#ttt} & {\tiny https://xxx.yyy/zzz/ttt4.ext4} & \#calibration & {\footnotesize Point spread function of event-list } {\tiny ivo://xxx/yyy/zzz\#ttt} & image/fits & 50000 & psf \cr
-\sptablerule
-{\tiny ivo://xxx/yyy/zzz\#ttt} & {\tiny https://xxx.yyy/zzz/ttt5.ext5} & \#calibration & {\footnotesize Background rate of  event-list } {\tiny ivo://xxx/yyy/zzz\#ttt} & text/csv & 1000 & bkgrate \cr
-\sptablerule
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt1.ext1} & {\footnotesize \#this} & {\footnotesize event-list}  {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize text/xml} & {\footnotesize 1000000} & {\footnotesize event-list} \cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt2.ext2} & {\footnotesize \#calibration} & {\footnotesize Effective AREA of the telescope/instrument associated with the event-list}  {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize text/csv} & {\footnotesize 10000} & {\footnotesize aeff} \cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt3.ext3} & {\footnotesize \#calibration} & {\footnotesize Energy dispersion of event-list}  {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize text/csv} & {\footnotesize 10000} & {\footnotesize edisp} \cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt4.ext4} & {\footnotesize \#calibration} & {\footnotesize Point spread function of event-list } {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize image/fits} & {\footnotesize 50000} & {\footnotesize psf} \cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt5.ext5} & {\footnotesize \#calibration} & {\footnotesize Background rate of  event-list } {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize text/csv} & {\footnotesize 1000} & {\footnotesize bkgrate} \cr
+\hline%\sptablerule
 
 \caption{DataLink response table attached to an event-list  record in ObsCore.}
 
 
 \label{tab:datalink1}
 \end{longtable}
+\end{center}
 \end{landscape}
 
 \subsubsection{Use Case --- Search for spatially resolved spectropolarimetric observations of the Crab with spectral resolution R > 100}
@@ -289,14 +291,14 @@ AND (obs_collection = 'CTAO-DR1')
 
 \subsubsection{Use Case --- Search for all ANTARES neutrino events for a given dataset in the direction of a point source}
 
-{\em Using the ANTARES 2007-2017 point source data set, retrieve all events, background estimate, and detector acceptance to calculate the expected neutrino flux from a given point source, e.g. HESSJ0632+057, as in \textit{G. Illuminati for the ANTARES Collaboration, PoS(ICRC2019)920} and recalculate the significance of the neutrino flux.}
+{\em Using the ANTARES 2007--2017 point source data set, retrieve all events, background estimate, and detector acceptance to calculate the expected neutrino flux from a given point source, e.g. HESSJ0632+057, as in \textit{G. Illuminati for the ANTARES Collaboration, PoS(ICRC2019)920} and recalculate the significance of the neutrino flux.}
 
 \medskip
 \noindent Find all datasets satisfying
 \begin{enumerate}[(i)]
   \item Position inside 5 degrees from (98.24, 5.81),  
   \item dataproduct\_type = ``event-bundle'' or ``event-list'' or ``response-function'', 
-  \item obs\_collection = ANTARES-2017-PS'',
+  \item obs\_collection = ``ANTARES-2017-PS''.
 \end{enumerate}
 
 \begin{verbatim}
@@ -317,9 +319,9 @@ AND (obs_collection = 'ANTARES-2017-PS')
 \begin{enumerate}[(i)]
   \item Position inside 5 degrees from (0.8, -45.19),
   \item dataproduct\_type = ``response-function'', 
-  \item instrument\_name = ``KM3NeT-ARCA''
-  \item t\_min/t\_max from 2027-2030
-  \item event\_type = ``track``
+  \item instrument\_name = ``KM3NeT-ARCA'',
+  \item t\_min/t\_max from 2027--2030, ({\em i.e.\/}, MJD 61406--62870),
+  \item event\_type = ``track''.
 \end{enumerate}
 
 \begin{verbatim}
@@ -327,11 +329,11 @@ SELECT * FROM ivoa.obscore
 NATURAL JOIN ivoa.obscore_hea
 WHERE
 (CONTAINS(POINT(s_ra, s_dec), CIRCLE, 0.8, -45.19, 5.0) = 1)
-AND (dataproduct_type IN ('aeff', 'edisp', 'psf'))
+AND (dataproduct_type = 'response-function'))
 AND (instrument_name = '%ARCA%')
-AND (tmin <= 2027)
-AND (t_max >= 2032)
-AND (event_type = ``track``)
+AND (t_min >= 61406)
+AND (t_max <= 62870)
+AND (event_type = 'track')
 \end{verbatim}
 
 \subsubsection{Use Case --- Study the combined neutrino flux for the Galactic plane}
@@ -343,7 +345,7 @@ AND (event_type = ``track``)
 \begin{enumerate}[(i)]
   \item messenger = ``neutrino'', 
   \item dataproduct\_type = ``event-bundle'',
-  \item analysis\_mode = ``diffuse''
+  \item analysis\_mode = ``diffuse''.
 \end{enumerate}
 % diffuse
 
@@ -358,15 +360,15 @@ AND (analysis_mode = 'diffuse')
 
 \subsubsection{Use Case --- Calculate the probability for a source class to be emitters of tau neutrinos}
 
-{\em Using a catalog of potential sources, calculate the probability of measuring a $\nu_{\tau}$ neutrino flux from a stacking of all sources of that type with 10 years of data taking with widely spaced, i.e. high energy detectors like ARCA.}
+{\em Using a catalog of potential sources, calculate the probability of measuring a $\nu_{\tau}$ neutrino flux from a stacking of all sources of that type with 10 years of data taking with widely spaced, high energy detectors like ARCA.}
 
 \medskip
 \noindent Find all neutrino datasets satisfying:
 \begin{enumerate}[(i)]
   \item dataproduct\_type = ``response-function'', 
-  \item messenger contains ``pdgid16'' or ``pdgid18'',
-  \item obs\_mode = ``wide-array''
-  \item analysis\_mode = ``pointsource''
+  \item messenger contains ``pdgid-16'' or ``pdgid-18'',
+  \item obs\_mode = ``wide-array'',
+  \item analysis\_mode = ``pointsource''.
 \end{enumerate}
 
 \begin{verbatim}
@@ -374,7 +376,7 @@ SELECT * FROM ivoa.obscore
 NATURAL JOIN ivoa.obscore_hea
 WHERE
 (dataproduct_type = 'response-function')
-AND (messenger = '%pdgid16%' OR messenger = '%pdgid18%')
+AND (messenger = '%pdgid-16%' OR messenger = '%pdgid-18%')
 AND (obs_mode LIKE '%wide-array%')
 AND (analysis_mode LIKE '%pointsource%')
 \end{verbatim}
@@ -424,8 +426,8 @@ AND (obs_collection = 'CSC2')
 SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
-(dataproduct_type = 'image')
-AND (dataproduct_subtype = 'fluxmap')
+((dataproduct_type = 'image')
+OR (dataproduct_subtype = 'fluxmap'))
 AND (obs_collection = 'CTAO-DR1')
 AND (instrument_name LIKE 'CTAO-N')
 AND (CAST(obs_id AS INTEGER) > 4374)
@@ -478,20 +480,26 @@ AND (INTERSECTS(TMOC(17, t_intervals), ...) = 1)
 SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
+(dataproduct_type = 'timeseries')
+AND (dataproduct_subtype = 'flux')
+AND (obs_collection = 'CTAO-DR1'
+AND t_min >= 62502
+AND t_max <= 62866
+AND target_name = 'PKS 2155-304'
 \end{verbatim}
 
-\subsubsection{Use Case --- Search for the \glspl{IRF} for a given direction and observation duration regardless of a neutrino event observation}
-
-{\em With the detector taking data, a given search might result in a non-observation of neutrinos although the detector could have observed events. The sensitivity of the detector towards a given neutrino flux is then calculated from IRFs to set an upper limit on a neutrino flux model.\/}
-
-\medskip
-\noindent Find all datasets satisfying:
-\begin{enumerate}[(i)]
-  \item dataproduct\_type = ,
-\end{enumerate}
-
-\begin{verbatim}
-SELECT * FROM ivoa.obscore
-NATURAL JOIN  ivoa.obscore_hea
-WHERE
-\end{verbatim}
+%\subsubsection{Use Case --- Search for the \glspl{IRF} for a given direction and observation duration regardless of a neutrino event observation}
+%
+%{\em With the detector taking data, a given search might result in a non-observation of neutrinos although the detector could have observed events. The sensitivity of the detector towards a given neutrino flux is then calculated from IRFs to set an upper limit on a neutrino flux model.\/}
+%
+%\medskip
+%\noindent Find all datasets satisfying:
+%\begin{enumerate}[(i)]
+%  \item dataproduct\_type = ,
+%\end{enumerate}
+%
+%\begin{verbatim}
+%SELECT * FROM ivoa.obscore
+%NATURAL JOIN  ivoa.obscore_hea
+%WHERE
+%\end{verbatim}
