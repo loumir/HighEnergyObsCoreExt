@@ -365,9 +365,9 @@ We propose to add an optional attribute {\em messenger\/} that specifies the mes
 	\item \texttt{neutrino}: the messenger is a neutrino (any type);
 	\item \texttt{photon}: the messenger is a photon;
 	\item \texttt{proton}: the messenger is a proton or anti-proton;
-	\item \texttt{pdgid-{\em nn\/}}: the messenger is a particle whose PDG ID\footnote{Particle Data Group Identifier, see \url{https://www.phy.bnl.gov/twister/bee/particles/}} is {\em nn\/}.
+	\item \texttt{pdgid{\em $\pm$nn\/}}: the messenger is a particle whose PDG ID\footnote{Particle Data Group Identifier, see \url{https://www.phy.bnl.gov/twister/bee/particles/}} is {\em $\pm$nn\/}.
 \end{itemize}
-The value ``pdgid-{\em nn\/}'' allows a messenger particle not listed in the table to be specified by reporting the particle's Particle Data Group Identifier as {\em nn\/}.  For example, a muon $\mu^{-}$ may be specified as ``pdgid-13''.   We note that permissible {\em messenger\/} values will vary from facility to facility and from instrument to instrument.
+The value ``pdgid{\em $\pm$nn\/}'' (where the sign is mandatory) allows a messenger particle not listed in the table to be specified by reporting the particle's Particle Data Group Identifier as {\em $\pm$nn\/}.  For example, a muon, $\mu^{-}$, may be specified as ``pdgid+13''.   We note that permissible {\em messenger\/} values will vary from facility to facility and from instrument to instrument.
 
 \subsection{Additional Columns}
 
@@ -535,7 +535,7 @@ For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \
 
 The messengers for \gls{HEA} observations may include particles other than the ones currently described in the UCD list.  Because some instruments can now distinguish electrons from positrons\footnote{For example, the Fermi-LAT instrument.}, as well antiprotons from protons\footnote{For example, the AMS-2 experiment.}, we also propose to add {\em phys.particle.positron\/} and {\em phys.particle.antiproton\/}, as well as {\em phys.particle.cosmicray\/} and unify them all under the {\em phys.particle\/} UCD hierarchy.
 
-For particle detectors, a wide range of different particles might have to be described. As is customary in particle physics, we propose to facilitate the use of the Particle Data Group Identifier\footnote{see \url{https://www.phy.bnl.gov/twister/bee/particles/}} as reference for any particle, describing {\em e.g.\/}, $\nu_{\tau}$ and $\bar{\nu}_{\tau}$ as {\em phys.particle.pdgid+16\/} and {\em phys.particle.pdgid-16\/} respectively.
+For particle detectors, a wide range of different particles might have to be described. As is customary in particle physics, we propose to facilitate the use of the Particle Data Group Identifier\footnote{see \url{https://www.phy.bnl.gov/twister/bee/particles/}} as reference for any particle, describing {\em e.g.\/}, $\nu_{\tau}$ and $\bar{\nu}_{\tau}$ as {\em phys.particle.pdgid+16\/} and {\em phys.particle.\hbox{pdgid-16}\/} respectively.
 
 One should note that electrons are denoted by the UCD {\em phys.electron\/} in the current version of the UCD list \citep{2024ivoa.spec.1218C} and are inappropriately not grouped under the {\em phys.particle\/} hierarchy.  This causes some inconsistencies that could be solved by marking {\em phys.electron\/} (and {\em phys.electron.degen\/}) as obsolete or not recommended, and adding the term  {\em phys.particle.electron\/} to the UCD list.
 
@@ -581,7 +581,7 @@ S & {\em phys.particle.electron\/} & Related to electron  \cr
 S & {\em phys.particle.photon\/} & Related to photon  \cr
 S & {\em phys.particle.positron\/} & Related to positron  \cr
 S & {\em phys.particle.pdgid\/} & Particle Data Group Identifier \cr                                                                  
-S & {\em phys.particle.pdgidXX\/} & Related to a particle with PDG ID XX  \cr
+S & {\em phys.particle.pdgid$\pm$XX\/} & Related to a particle with PDG ID $\pm$XX  \cr
 P & {\em stat.distribution\/} & Type or shape of statistical distribution  \cr
 P & {\em stat.error.negative\/} & Negative statistical error  \cr
 P & {\em stat.error.positive\/}  & Positive statistical error  \cr
@@ -643,7 +643,7 @@ This section summarizes the proposal for the \gls{HEA} extension of ObsCore.  We
 \hline
  em\_ref\_oaa & \ucd{pos.posAng;instr.offset;em} & deg & float & {Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spectral characterization attributes em\_res\_power, em\_resolution are defined} & NO \\
 \hline
-  t\_intervals & \ucd{?? }& unitless & TMOC & {List of observation intervals or stable/good time intervals describing the exact observation time coverage} & NO \\
+  t\_intervals & \ucd{TBD}& unitless & TMOC & {List of observation intervals or stable/good time intervals describing the exact observation time coverage} & NO \\
 \hline
   energy\_min & \ucd{em.energy;stat.min} & float & eV &  {Energy associated to the ObCcore attribute em\_max, describing the minimal energy of the dataset} & NO \\
 \hline
@@ -657,7 +657,7 @@ This section summarizes the proposal for the \gls{HEA} extension of ObsCore.  We
 \hline
   event\_type & \ucd{meta.code.qual;obs.event} & unitless & string &{Data quality flag of the events ({\em e.g.\/}, ``good psf'', ``good rejection'', ``Nhit (100,200)''} & NO \\
 \hline
-  messenger & \ucd{??} & unitless & string &{Messenger particle type ({\em e.g.\/}, ``photon'', ``cosmic-ray'', ``neutrino'', ``pdgid-13'')} & NO \\
+  messenger & \ucd{TBD} & unitless & string &{Messenger particle type ({\em e.g.\/}, ``photon'', ``cosmic-ray'', ``neutrino'', ``pdgid-13'')} & NO \\
 \hline
 \end{longtable}
 %\end{center}

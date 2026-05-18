@@ -17,7 +17,7 @@ SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
 (target_name = 'Sgr A*' OR
-CONTAINS(POINT(s_ra, s_dec), CIRCLE, 266.4168, -29.0078, 0.5) = 1)
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(266.4168, -29.0078, 0.5)) = 1)
 AND (dataproduct_type = 'event-list')
 \end{verbatim}
 
@@ -41,7 +41,7 @@ SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
 (target_name = 'BL Lac' OR
-CONTAINS(POINT(s_ra, s_dec), CIRCLE, 330.680338, +42.27777, 0.083333) = 1)
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(330.680338, +42.27777, 0.083333)) = 1)
 AND (dataproduct_type = 'event-list')
 AND (calib_level >= 2)
 AND (em_calib_status = 'calibrated')
@@ -66,7 +66,7 @@ First, run the ObCore query:
 \begin{verbatim}
 SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
-WHERE (INTERSECTS(s_region, CIRCLE(312.775, 30.683, 1.5)) = 6)
+WHERE (INTERSECTS(s_region, CIRCLE(312.775, 30.683, 1.5)) = 1)
 AND (dataproduct_type = 'event-list' OR dataproduct_type = 'aeff'
   OR dataproduct_type = 'edisp' OR dataproduct_type = 'psf'
   OR dataproduct_type = 'bkgrate')
@@ -94,7 +94,7 @@ SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
 (target_name = 'Cas A' OR
-CONTAINS(POINT(s_ra, s_dec), CIRCLE, 350.8584, +58.8113, 0.042) = 2)
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(350.8584, +58.8113, 0.042)) = 1)
 AND (dataproduct_type = 'event-list')
 AND (obs_collection = 'VERITAS-DR1')
 AND (access_format = ’application/x-votable+xml;content=datalink’)
@@ -120,7 +120,7 @@ SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
 (target_name = 'Cas A' OR
-CONTAINS(POINT(s_ra, s_dec), CIRCLE, 350.8584, +58.8113, 0.16667) = 1)
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(350.8584, +58.8113, 0.16667)) = 1)
 AND (dataproduct_type = 'event-bundle')
 AND (ev_xel >= 1000000)
 \end{verbatim}
@@ -230,7 +230,7 @@ SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
 (target_name = 'Crab' OR target_name = 'M1' OR
-CONTAINS(POINT(s_ra, s_dec), CIRCLE, 83.6324, +22.0174, 0.083333) = 1)
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(83.6324, +22.0174, 0.083333)) = 1)
 AND (dataproduct_type = 'event-bundle')
 AND (calib_level >= 2)
 AND (s_resolution > 100)
@@ -258,7 +258,7 @@ AND (o.ucd LIKE '%pos.eq%')
 SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
-(CONTAINS(POINT(s_ra, s_dec), CIRCLE, 83.84358, -5.43639, 0.033333) = 1)
+(CONTAINS(POINT(s_ra, s_dec), CIRCLE(83.84358, -5.43639, 0.033333)) = 1)
 AND (dataproduct_type = 'response-function')
 AND (dataproduct_subtype = 'psf')
 AND (obs_id = '4374')
@@ -338,7 +338,7 @@ AND (event_type = 'track')
 
 \subsubsection{Use Case --- Study the combined neutrino flux for the Galactic plane}
 
-{\em Identify all neutrino data sets in the region of the Galactic plane to perform a combined neutrino flux study extending a study like the IceCube \textbf{Observation of high-energy neutrinos from the Galactic plane. DOI: 10.1126/science.adc9818}.}, using event lists and IRFs of datasets optimized for the analysis of diffuse neutrino emission.
+{\em Identify all neutrino data sets in the region of the Galactic plane to perform a combined neutrino flux study extending a study like the IceCube \textbf{Observation of high-energy neutrinos from the Galactic plane. DOI: 10.1126/science.adc9818}, using event lists and IRFs of datasets optimized for the analysis of diffuse neutrino emission.}
 
 \medskip
 \noindent Find all neutrino datasets satisfying:
@@ -400,7 +400,7 @@ AND (analysis_mode LIKE '%pointsource%')
 SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
-(CONTAINS(POINT(s_ra, s_dec), CIRCLE, 54.036061, +61.907633, 0.0013888) = 1)
+(CONTAINS(POINT(s_ra, s_dec), CIRCLE(54.036061, +61.907633, 0.0013888)) = 1)
 AND (dataproduct_type = 'draws')
 AND (dataproduct_subtype = 'poserr')
 AND (obs_collection = 'CSC2')
@@ -446,7 +446,7 @@ AND (CAST(obs_id AS INTEGER) <= 4379)
   \item dataproduct\_type = ``timeseries'' {\em or\/} ``pdf'',
   \item calib\_level = 4,
   \item energy\_min $\leq 0.3$ {\em and\/} energy\_max $\geq 7.0$,
-  \item t\_intervals TMOC intersects\footnote{We note that this functiondoes not yet exist in ADQL} MJD 56320--56325 TT.
+  \item t\_intervals TMOC intersects\footnote{We note that this function does not yet exist in ADQL} MJD 56320--56325 TT.
 \end{enumerate}
 
 
@@ -454,7 +454,7 @@ AND (CAST(obs_id AS INTEGER) <= 4379)
 SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
-(CONTAINS(POINT(s_ra, s_dec), CIRCLE, 10.6847, +41.2688, 1.5) = 1)
+(CONTAINS(POINT(s_ra, s_dec), CIRCLE(10.6847, +41.2688, 1.5)) = 1)
 AND ((dataproduct_type = 'timeseries') OR (dataproduct_type = 'pdf'))
 AND (calib_level = 4)
 AND (energy_min <= 300.0) AND (energy_max >= 7000.0)
