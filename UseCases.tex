@@ -148,7 +148,7 @@ WHERE (dataproduct_type = 'event-list')
 AND (obs_collection = 'CTAO-DR1')
 AND (access_format = 'application/x-votable+xml;content=datalink')
 AND (instrument_name LIKE 'CTAO-S')
-AND (energy\_max >= 1.0e+12)
+AND (energy_max >= 1.0e+12)
 \end{verbatim}
 
 The query output is a VOTable that follows the DALI specification.
@@ -157,8 +157,8 @@ We process this VOTABLE to access to the data:
 
 \begin{enumerate}[(i)]
   \item for each row of the query output, get the ``obs\_id'' and the ``access\_url'' of the DataLink,
-  \item get the VOTABLE associated with the ``access\_url'',
-  \item for each row of the VOTABLE, get the ``content\_qualifier'' and the ``accessURL'',
+  \item get the VOTABLE associated with the ``access'',
+  \item for each row of the VOTABLE, get the ``content\_qualifier'' and the ``access\_url'',
   \item download the data associated to each ``accessURL''.
 \end{enumerate}
 
@@ -179,7 +179,7 @@ FOR EACH ROW OF OUTPUT_VOTABLE:
     	EVENT_FILE['OBS_ID'] = GET RAW['accessURL']
 \end{verbatim}
 
-Table \ref{tab:datalink1} displays an example of the DataLink response table attached to such an event-list discovery. 
+Table \ref{tab:datalink1} displays an example of the DataLink response table attached to such an event-list discovery.
 The obs\_publisher\_did of the single discovered event-list is repeated in the ID column of the DataLink table.
 Mandatory FIELDS service\_def and error\_messsage are omitted because they are empty
 
@@ -273,7 +273,7 @@ AND (obs_collection = 'CSC2')
 \medskip
 \noindent Find the CTAO datasets satisfying:
 \begin{enumerate}[(i)]
-  \item dataproduct\_type = ``event-bundle'' or dataproduct\_type = ``aeff'' or dataproduct\_type = ``psf'' or dataproduct\_type = ``edisp'' or dataproduct\_type = ``bkgrate'',
+  \item dataproduct\_type = ``aeff'' or dataproduct\_type = ``psf'' or dataproduct\_type = ``edisp'' or dataproduct\_type = ``bkgrate'',
   \item obs\_id = ``4374'',
   \item obs\_collection = ``CTAO-DR1''.
 \end{enumerate}
@@ -282,8 +282,9 @@ AND (obs_collection = 'CSC2')
 SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
-(dataproduct_type = 'event-bundle' OR dataproduct_type = 'aeff'
-  OR dataproduct_type = 'edisp' OR dataproduct_type = 'psf' 
+(dataproduct_type = 'aeff'
+  OR dataproduct_type = 'edisp'
+  OR dataproduct_type = 'psf'
   OR dataproduct_type = 'bkgrate')
 AND (obs_id = '4374')
 AND (obs_collection = 'CTAO-DR1')
@@ -296,8 +297,8 @@ AND (obs_collection = 'CTAO-DR1')
 \medskip
 \noindent Find all datasets satisfying
 \begin{enumerate}[(i)]
-  \item Position inside 5 degrees from (98.24, 5.81),  
-  \item dataproduct\_type = ``event-bundle'' or ``event-list'' or ``response-function'', 
+  \item Position inside 5 degrees from (98.24, 5.81),
+  \item dataproduct\_type = ``event-bundle'' or ``event-list'' or ``response-function'',
   \item obs\_collection = ``ANTARES-2017-PS''.
 \end{enumerate}
 
@@ -318,7 +319,7 @@ AND (obs_collection = 'ANTARES-2017-PS')
 \noindent Find all IRF datasets satisfying:
 \begin{enumerate}[(i)]
   \item Position inside 5 degrees from (0.8, -45.19),
-  \item dataproduct\_type = ``response-function'', 
+  \item dataproduct\_type = ``response-function'',
   \item instrument\_name = ``KM3NeT-ARCA'',
   \item t\_min/t\_max from 2027--2030, ({\em i.e.\/}, MJD 61406--62870),
   \item event\_type = ``track''.
@@ -343,7 +344,7 @@ AND (event_type = 'track')
 \medskip
 \noindent Find all neutrino datasets satisfying:
 \begin{enumerate}[(i)]
-  \item messenger = ``neutrino'', 
+  \item messenger = ``neutrino'',
   \item dataproduct\_type = ``event-bundle'',
   \item analysis\_mode = ``diffuse''.
 \end{enumerate}
@@ -365,7 +366,7 @@ AND (analysis_mode = 'diffuse')
 \medskip
 \noindent Find all neutrino datasets satisfying:
 \begin{enumerate}[(i)]
-  \item dataproduct\_type = ``response-function'', 
+  \item dataproduct\_type = ``response-function'',
   \item messenger contains ``pdgid-16'' or ``pdgid+16'',
   \item obs\_mode = ``wide-array'',
   \item analysis\_mode = ``pointsource''.
@@ -468,8 +469,7 @@ AND (INTERSECTS(TMOC(17, t_intervals), ...) = 1)
 \medskip
 \noindent Find all datasets satisfying:
 \begin{enumerate}[(i)]
-  \item dataproduct\_type = ``timeseries'',
-  \item dataproduct\_subtype = ``flux'',
+  \item dataproduct\_type = ``light-curve'',
   \item obs\_collection = ``CTAO-DR1'',
   \item tmin $\geq 62502$ ({\em i.e.\/}, 2030-01-01),
   \item tmax $\leq 62866$ ({\em i.e.\/}, 2030-12-31),
@@ -480,8 +480,7 @@ AND (INTERSECTS(TMOC(17, t_intervals), ...) = 1)
 SELECT * FROM ivoa.obscore
 NATURAL JOIN  ivoa.obscore_hea
 WHERE
-(dataproduct_type = 'timeseries')
-AND (dataproduct_subtype = 'flux')
+(dataproduct_type = 'light-curve')
 AND (obs_collection = 'CTAO-DR1'
 AND t_min >= 62502
 AND t_max <= 62866

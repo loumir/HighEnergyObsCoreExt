@@ -45,7 +45,7 @@
 \usepackage[nopostdot,style=super,nonumberlist,toc]{glossaries}
 \usepackage{hyperref}
 
-% mireille : in order to flag changes to fill 
+% mireille : in order to flag changes to fill
 \newcommand{\TODO}[1]{%
     \noindent%
     \colorbox{todocolor}{%
@@ -138,11 +138,11 @@ The goal is to explore elements needed to reliably discover and select \gls{HEA}
 
 \section{High Energy Astrophysics Data}
 
-\gls{HEA} data include observations obtained using photon detectors covering X-ray (from $\sim$0.1 keV to $\sim$120 keV) through gamma-ray (from 120 keV up to $\gtrsim$ PeV) energies, as well as cosmic-ray and astrophysical neutrino ($\gtrsim$ GeV) detectors, or other messengers related to \gls{HEA} phenomena. The domain is now sufficiently mature to provide open data that are science-ready and work with open analysis tools ({\em e.g.\/}, CIAO \citep{2006SPIE.6270E..1VF} or Gammapy \citep{gammapy:2023}). The science output of the \gls{HEA} domain already includes advanced products such as images, cubes, spectra, and time series such as light curves and time-resolved spectra. Additional data products include fitted sky models with spatial, spectral, and/or temporal component(s), along with their confidence intervals or confidence limits, and covariance matrices.   Finally, multiple \gls{HEA} instruments produce source catalogs and surveys covering up to the full the sky, which include maps of photon or particle flux, exposure, sensitivity, and aperture-photometry likelihood profiles.
+\gls{HEA} data include observations obtained using photon detectors covering X-ray (from $\sim$0.1 keV to $\sim$120 keV) through gamma-ray (from 120 keV up to $\gtrsim$ PeV) energies, as well as cosmic-ray and astrophysical neutrino ($\gtrsim$ GeV) detectors, or other messengers related to \gls{HEA} phenomena. The domain is now sufficiently mature to provide open data that are science-ready and work with open analysis tools ({\em e.g.\/}, CIAO, \citealt{2006SPIE.6270E..1VF}, or Gammapy, \citealt{gammapy:2023}). The science output of the \gls{HEA} domain already includes advanced products such as images, cubes, spectra, and time series such as light curves and time-resolved spectra. Additional data products include fitted sky models with spatial, spectral, and/or temporal component(s), along with their confidence intervals or confidence limits, and covariance matrices.   Finally, multiple \gls{HEA} instruments produce source catalogs and surveys covering up to the full the sky, which include maps of photon or particle flux, exposure, sensitivity, and aperture-photometry likelihood profiles.
 
 Observations of the universe at the highest energies are based on techniques that are radically different compared to the UV through radio domains. \gls{HEA} observatories\footnote{For example, Chandra, XMM-Newton, Fermi, H.E.S.S., MAGIC, VERITAS, HAWC, LHAASO, IceCube, ANTARES, Auger, and soon CTAO, KM3NeT, and SWGO.} are generally designed to detect particles ({\em e.g.\/}, individual photons, cosmic-rays, or neutrinos) with the ability to estimate multiple observables for those particles. These detection techniques all rely on {\em event counting\/}\footnote{As opposed to signal integrating ({\em e.g.\/}, using a detector that accumulates the total photon signal during an exposure).}, where an event has some probability of being due to the interaction of a particle from an astrophysical source with the detectors, but also has some probability of being from instrumental or background effects. The data corresponding to an event are first an instrumental signal, which is then calibrated and processed to estimate physical quantities such as a time of arrival, point-of-origin on the sky, and an energy proxy associated with the event. Several other intermediate and qualifying characteristics may be associated with a detected event, depending on the detection technique. The ensemble of events detected over a given time interval and spatial field-of-view is referred to as an {\em event list\/}, which we designate an {\bf event-list} in this document.
 
-Though {\bf event-list}s {\em may\/} include estimators for calibrated physical values, they typically still have to be corrected for the photometric, spectral, spatial, and/or temporal responses of the telescope and detector combination to yield scientifically interpretable information. The mappings between physical measurements of the source properties and the observables are called Instrument Response Functions (\glspl{IRF}\footnote{We try to avoid using the term \gls{IRF} in a normative sense since historical usage across the broad \gls{HEA} community (and from facility to facility) varies. In some cases, \gls{IRF} has been used to mean specifically the product of the \gls{ARF} and \gls{RMF}, whereas in other cases \gls{IRF} has been used more generally to mean any instrumental response function regardless of type.}).  Some \glspl{IRF} are probabilistic in nature\footnote{For example, the energy matrix is a probability density function.}, and in addition may depend on the set of events selected for analysis by the end user.  They are usually not invertible, so methods such as forward-folding fitting (using source models with any combination of spectral, spatial, temporal, and/or polarization components that are estimated) are needed to estimate physical properties, such as the true flux of particles from a source arriving at the instrument, given the measured observable quantities. The \glspl{IRF} generally evolve over time with the instrument and observation characteristics, and are usually defined for a specific time interval and may be decomposed into a standard set of independent components (see \S~3.1.5 of \citep{2024ivoa.note.heig}), such as the spatial point-spread function or the energy-migration matrix or different messenger particle types, where each component may be stored or computed separately.  Since both \glspl{IRF} and {\bf event-list}s are required to analyze \gls{HEA} data, some \gls{IVOA} standards must be modified in order to expose both of them via the \gls{VO}.
+Though {\bf event-list}s {\em may\/} include estimators for calibrated physical values, they typically still have to be corrected for the photometric, spectral, spatial, and/or temporal responses of the telescope and detector combination to yield scientifically interpretable information. The mappings between physical measurements of the source properties and the observables are called Instrument Response Functions (\glspl{IRF}\footnote{We try to avoid using the term \gls{IRF} in a normative sense since historical usage across the broad \gls{HEA} community (and from facility to facility) varies. In some cases, \gls{IRF} has been used to mean specifically the product of the \gls{ARF} and \gls{RMF}, whereas in other cases \gls{IRF} has been used more generally to mean any instrumental response function regardless of type.}).  Some \glspl{IRF} are probabilistic in nature\footnote{For example, the energy matrix is a probability density function.}, and in addition may depend on the set of events selected for analysis by the end user.  They are usually not invertible, so methods such as forward-folding fitting (using source models with any combination of spectral, spatial, temporal, and/or polarization components that are estimated) are needed to estimate physical properties, such as the true flux of particles from a source arriving at the instrument, given the measured observable quantities. The \glspl{IRF} generally evolve over time with the instrument and observation characteristics, and are usually defined for a specific time interval and may be decomposed into a standard set of independent components (see \S~3.1.5 of \citealt{2024ivoa.note.heig}), such as the spatial point-spread function or the energy-migration matrix or different messenger particle types, where each component may be stored or computed separately.  Since both \glspl{IRF} and {\bf event-list}s are required to analyze \gls{HEA} data, some \gls{IVOA} standards must be modified in order to expose both of them via the \gls{VO}.
 
 In the following, the current ObsCore standard will be discussed in \S~\ref{sec:obscore}, focusing on attributes that need to be modified. Then, we propose the creation of a \gls{HEA} extension of ObsCore in \S~\ref{sec:obscoreext}, as some attributes are very specific to our domain. In these two sections, the discussion focuses on the attribute definitions rather on the attribute values. In \S~\ref{sec:voc}, enhancement of vocabulary is proposed for some ObsCore attributes, DataLink semantics, UCDs, and MIME-types.
 
@@ -292,7 +292,7 @@ We recognize that performing such queries will require enhancements to ADQL, but
 
 The existing attributes {\em em\_min\/} and {\em em\_max\/} that define the coverage of the spectral axis (defined as wavelength expressed in units of m) are not user friendly for \gls{HEA} where datasets are generally selected according to an energy range ({\em i.e.\/}, inverse wavelength) in units of eV (or scaled units of eV, for example keV, MeV, GeV, TeV, PeV). Unlike the radio domain where $\lambda = c/\nu$, where $c$ is an almost universally remembered physical constant, the conversion $\lambda = hc/E$ is not simple for the user to express. As the spectral range covered by \gls{HEA} data is many decades larger than for other wavebands, the accurate numerical representations of typical \gls{HEA} spectral ranges as {\em em\_min\/}/{\em em\_max\/} requires quantities with many digits of precision and exponents ranging from $\sim\!10^{-5}$--$10^{-22}$, and are misleading when used for energy ranges of massive particles.  Since specification of the spectral range is largely fundamental to data discovery in the \gls{HEA} regime, we propose to add attributes {\em energy\_min\/} and {\em energy\_max\/} that specify the minimum and maximum spectral range values in units of eV\null. Note that the sense of these attributes is {\em opposite\/} that of {\em em\_min\/} and {\em em\_max\/} because of the inverse wavelength relationship between energy and wavelength, so numerical comparisons must be transposed ({\em e.g.\/}, $E>E_{\rm thresh}$ becomes $\lambda<hc/E_{\rm thresh}$).  (An alternate approach would be to add attributes {\em em\_min\_energy\/} and {\em em\_max\_energy\/} that represent the energies corresponding to {\em em\_min\/} and {\em em\_max\/} in units of eV\null. This is less desirable since queries on an energy would need to be specified as {\em em\_max\_energy\/}${}\leq E <{}${\em em\_min\_energy\/}, which is likely confusing. This approach is not recommended when describing massive particles, including neutrinos.)
 
-The value of $hc$ used to compute $\lambda = hc/E$ is $1.239841984332\times10^{-6}\rm \,eV\,m$ based on the 2022 CODATA list of internationally recommended Fundamental Physical Constants\footnote{\url{https://physics.nist.gov/cuu/Constants/index.html}} ($c = 299\,792\,458\rm \,m\,s^{-1}$ (exact); $h = 6.626\,070\,15\times10^{-34}\rm \,J\,Hz^{-1}$ (exact); $e = 1.602\,176\,634\times10^{-19}\rm \,C$ (exact)). 
+The value of $hc$ used to compute $\lambda = hc/E$ is $1.239841984332\times10^{-6}\rm \,eV\,m$ based on the 2022 CODATA list of internationally recommended Fundamental Physical Constants\footnote{\url{https://physics.nist.gov/cuu/Constants/index.html}} ($c = 299\,792\,458\rm \,m\,s^{-1}$ (exact); $h = 6.626\,070\,15\times10^{-34}\rm \,J\,Hz^{-1}$ (exact); $e = 1.602\,176\,634\times10^{-19}\rm \,C$ (exact)).
 
 \subsection{{\em obs\_mode}}
 
@@ -323,7 +323,7 @@ Some \gls{HEA} facilities can obtain observations using different spatial scan m
 	\item \texttt{raster-map}: observations on a predefined spatial mesh (generally regular and rectangular ({\em e.g.\/}, a grid observation for \glspl{IACT});
 	\item \texttt{on-the-fly-cross-scan}: observations along a predefined spatial pattern;
 	\item \texttt{on-the-fly-cross-map}: observations along parallel directions ({\em e.g.\/}, a wobble observation for \glspl{IACT});
-	\item \texttt{slew} : observations taken while the telescope is slewing.	
+	\item \texttt{slew} : observations taken while the telescope is slewing.
 \end{itemize}
 We intend that the name of this attribute harmonizes with the name of the similar attribute in the proposed ``IVOA Obscore Extension for Radio Data''\footnote{\url{https://github.com/ivoa-std/ObsCoreExtensionForRadioData}.} and note that the first five predefined values for {\em scan\_mode\/} also harmonize with that proposal.  The \texttt{slew} {\em scan\_mode\/} describes observations obtained while the telescope is slewing ({\em i.e.\/}, where the field of view moves with arbitrary direction and speed while the telescope is repositioning), which is a mode used extensively by some satellite-based \gls{HEA} facilities.  We further note that permissible {\em scan\_mode\/} values may vary from facility to facility and from instrument to instrument and additional values beyond the predefined values are possible. This attribute is not expected to be used for non-pointing instruments.
 
@@ -402,7 +402,7 @@ We then propose to add the following data product type to define response functi
  \end{quote}
 
 The following data product types specialize {\bf response function}.  Note that while most of these are primarily used in \gls{HEA}, the point spread function ({\bf psf}) is a {\bf response-function} that is generally applicable across multiple wavebands.
- 
+
 \begin{quote}
 {\bf aeff}: A dataset that records the ``effective area'' of a telescope and/or instrument.  The effective area is the geometric area of the telescope and/or instrument reduced by efficiency factors such as reflectivity and vignetting, among other effects \citep{deil_2022_7304668}.
 
@@ -560,8 +560,8 @@ S & {\em em.gamma.vhe\/}  & Very-High-Energy gamma ray (10 GeV -- 100 TeV)  \cr
 S & {\em em.gamma.uhe\/}  & Ultra-High-Energy gamma ray ($>100$ TeV)  \cr
 Q & {\em instr.event\/} & Particle event detection \cr
 Q & {\em instr.event.grade\/} & Particle event grade \cr
-Q & {\em instr.pulseHeight\/} & Pulse height amplitude measure  \cr                                   
-Q & {\em instr.event.type\/} & Particle event type \cr                                                    
+Q & {\em instr.pulseHeight\/} & Pulse height amplitude measure  \cr
+Q & {\em instr.event.type\/} & Particle event type \cr
 E & {\em phot.count.density\/} & Count flux density (dimensionality: $\rm [L^{-2}\,T^{-1}\,E^{-1}]$)  \cr
 E & {\em phot.count.density.sb\/} & Count flux density surface brightness (dimensionality: $\rm [L^{-2}\,T^{-1}\,E^{-1}\,\hbox{sr}^{-1}]$)  \cr
 E & {\em phot.count.radiance\/} & Count flux radiance (dimensionality: $\rm [L^{-2}\,T^{-1}\,\hbox{sr}^{-1}]$)  \cr
@@ -580,7 +580,7 @@ S & {\em phys.particle.cosmicray\/} & Related to cosmic rays particles  \cr
 S & {\em phys.particle.electron\/} & Related to electron  \cr
 S & {\em phys.particle.photon\/} & Related to photon  \cr
 S & {\em phys.particle.positron\/} & Related to positron  \cr
-S & {\em phys.particle.pdgid\/} & Particle Data Group Identifier \cr                                                                  
+S & {\em phys.particle.pdgid\/} & Particle Data Group Identifier \cr
 S & {\em phys.particle.pdgid$\pm$XX\/} & Related to a particle with PDG ID $\pm$XX  \cr
 P & {\em stat.distribution\/} & Type or shape of statistical distribution  \cr
 P & {\em stat.error.negative\/} & Negative statistical error  \cr
@@ -661,7 +661,7 @@ This section summarizes the proposal for the \gls{HEA} extension of ObsCore.  We
 \hline
 \end{longtable}
 %\end{center}
-% end mireille ucd update 
+% end mireille ucd update
 \end{center}
 \end{landscape}
 
