@@ -459,7 +459,7 @@ WHERE
 AND ((dataproduct_type = 'timeseries') OR (dataproduct_type = 'pdf'))
 AND (calib_level = 4)
 AND (energy_min <= 300.0) AND (energy_max >= 7000.0)
-AND (INTERSECTS(TMOC(17, t_intervals), ...) = 1)
+AND (INTERSECTS(TMOC(17, t_intervals), TMOC(17, 56320.0, 56325.0)) = 1)
 \end{verbatim}
 
 \subsubsection{Use Case --- Search for the CTAO flux light curves of PKS 2155-304 in 2030}
