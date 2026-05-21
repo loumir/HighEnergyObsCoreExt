@@ -1,0 +1,114 @@
+Vocabulary: http://www.ivoa.net/rdf/analysis-product-type
+Author: Bruno Khelifi <khelifi@in2p3.fr> ,<mireille.louys@unistra.fr>
+Date: 2026-02-04/ updated 2026-05-21
+
+New Term: draws
+
+Action: Addition
+
+Label: draws
+
+Description: 
+A dataset that records statistical draws computed from a probability distribution or a sample population, for example Markov chain Monte Carlo (MCMC) draws used when computing the Bayesian marginal probability density function for a random variable. The draws can be interpreted to provide a robust estimation of the probability distribution of variable, and correlations between the draws provide information about how well the draws converge to the parent probability distribution.
+
+Relationships: none
+
+Used-in: For example, detection position uncertainty draws data products (Chandra Source Catalog data product), e.g., https://cda.cfa.harvard.edu/csccli/retrieveFile?filename=acisf03498_000N030_r2102s_draws3.fits&filetype=draws&version=rel2.1
+There are also aperture photometry draws data products (draws for various flux distributions) that will be released in October 2026.
+
+
+
+Rationale: 
+
+Many analysis methods across all wavebands use statistical methods to establish optimal parameter estimates for measured or derived properties.  In particular, high-energy astrophysics analyses must employ statistical methods to derive products such as #spectrum, #sed, #light-curve, #image etc. in physical units since the instrument responses are usually non-invertible.
+
+The term #draws is equally applicable to Bayesian inference or frequentist analysis.  In the frequentist approach, the best parameter estimates correspond to the maximum likelihood probability among all realizations of the random variables.  In Bayesian inference, The best parameter estimates are typically derived from the mode of the posterior probability distribution.
+
+A draws dataset maps the probability (or equivalently, likelihood) of the desired parameters across a phase space of possible values of selected random variables.  The set of draws enables the computation of the distributions of the probability density functions of desired parameters as a function of the random variables, enabling determination of optimal parameter estimates, confidence intervals, quantiles, confidence limits, and thus uncertainties, upper limits, and lower limits.  The draws provide information as to the actual statistical distribution of parameter uncertainties, with is particularly critical in cases of non-Gaussian degeneracies, small number statistics (inherently non-Gaussian), or when dealing with large numbers of parameters.  
+Additionally, a key benefit of draws is that the dataset inherently provides information on the robustness of the statistical sampling approach and how well the draws converge to the parent probability distribution, which is not available from other parameter estimation data products such as probability density functions.
+
+Discussion : 
+The term “draws” is highly generic and is applicable to any statistical framework, whether frequentist analysis or Bayesian inference.  The term “samples” was also considered initially, but is very general and widely used in astronomy for a variety of different purposes (for example, moon rocks samples, or other laboratory physical samples which would be outside of the HEIG scope here and misleading.
+
+There is a subtle difference between the widely used meanings of the term “samples” used in statistical analyses and the term “draws”, although they are often used interchangeably:  
+  — “Samples” are the individual components of a statistical sample selected from a larger population, and the sample is typically used as representative of a population.  This term is commonly used in frequentist statistical analyses.
+  — “Draws” are very similar, but can be drawn either from a population or from a probability distribution (such as the posterior probability distribution used in Bayesian statistics).  This term is commonly used in Bayesian statistical analyses, *but is also applicable to frequentist analyses* (in the former case is sampling parameters of the distribution whereas for the latter case one is sampling data points from the observed population).
+Because of this, we recommend the use of the term “draws”.  We note that the existing datasets that require this definition are Bayesian posterior distributions where “samples” isn’t really an appropriate choice.
+
+=======================================
+
+Vocabulary: http://www.ivoa.net/rdf/product-type
+Author: Bruno Khelifi <khelifi@in2p3.fr>
+Date: 2026-02-04
+
+New Term: pdf
+
+Action: Addition
+
+Label: Probability Density Function of a quantity
+
+Description: Probability density function of a quantity, for example the Bayesian
+	marginal probability density function associated to the spectral index of
+	a spectrum
+
+Relationships: none
+
+Used-in: 
+Example : Aperture photometry (net counts, count rate, photon flux, and energy flux) probability density function data products (Chandra Source Catalog data product), e.g., https://cda.cfa.harvard.edu/csccli/retrieveFile?filename=acisf14335_000N031_r2598b_phot3.fits&filetype=aperphot&version=rel2.1
+
+
+Rationale:
+Statistical analyses used to establish parameter estimates for measured or derived properties yield typically quantities that describe the shape of the probability density function (or pdf) of those parameters.  For simple analyses, these may be (e.g.) the mean and variance of a Gaussian distribution that approximates the actual probability distribution.  
+
+High-energy astrophysics must employ statistical methods for parameter estimation and to derive products such as #spectrum, #sed, #light-curve, #image etc. in physical units.  In many cases the probability distribution is non-Gaussian (indeed, non-analytic), and so a representation of the *actual* probability distribution is needed for robust further analysis (especially in HEA, where source counts in the extreme Poisson regime are common and uncertainties in the calibrations themselves [random and systematic] must also be considered.  
+
+Estimates such as the mean/median/mode, and confidence intervals etc. can be derived from the pdf; however many modern analyses will use the pdf distribution directly.  This is very useful when the distribution is highly asymmetrical or multi-modal. If the variable is for example the size of an object, the knowledge of asymmetry of this PDF is obviously more useful than symmetric errors.
+
+There are two main types of pdfs in common use: (1) a “differential” pdf (this is the most common) reports the probability density as a function of the random variable so that the pdf is a table of P(x) vs. x; in practical representations, the random variable is quantized rather than continuous, so the pdf is a table where each row typically records the integral probability within a single x bin, i.e., P(x_lo-to-x_hi) vs. x; (2) an “integral” pdf (commonly termed a cdf), which corresponds to the cumulative probability P(-infinity-to-x) vs. x.  
+A third type of PDF is the “average” pdf, which provides the expected value (center of mass) of the distribution; however these may be represented by a single value and do not require a tabular representation.
+(????Mireille:  Not clear to me : if a unique value can be given , then there is no need for a data product type ) 
+
+Discussion:
+
+The serialization of the data product should preferably include metadata to differentiate between the types of pdfs.  However, this may not be critical since the type of pdf can be determined from the sum of the probabilities over the distribution (the sum of the probabilities of a differential pdf that includes only the instantaneous probabilities at the x values will be < 1, for a binned differential pdf the sum will be 1, and for a cdf the sum will be > 1) provided the pdf spans the distribution adequately.
+
+The dataproduct_subtype column can be used to differentiate the types of pdf : 
+'Differentiate pdf', 'Integral pdf', 'Averaged pdf'. 
+
+
+=======================================
+
+Vocabulary: http://www.ivoa.net/rdf/product-type
+Author: Bruno Khelifi <khelifi@in2p3.fr>
+Date: 2026-02-04, update 2026-04-22
+
+New Term: region
+
+Action: Addition
+
+Label: Region
+
+Description: dataset that encodes (one or more) regions of parameter space, for example 
+a spatial region or a region of phase space covered by a dataset. The set of dimensions
+represented by the region can be arbitrary
+
+Relationships: none
+
+Used-in: Example: region data products (Chandra Source Catalog data product), e.g., https://cda.cfa.harvard.edu/csccli/retrieveFile?filename=acisf15546_000N030_r3154_reg3.fits&filetype=srcreg&version=rel2.1
+
+Rationale:
+
+Existing astronomical data archives record region information in many different formats (typically not related to IVOA standards, since in many cases they pre-date those standards).  For example, Chandra X-ray Observatory typically records spatial regions using the FITS Spatial Region File Registered Convention, which is supported by the widely use CFITSIO FITS I/O software library as well as Astropy.  XMM and Fermi support ds9 format region data products, and the NRAO Common Astronomy Software Applications (CASA) radio package supports the CRTF region file format.  Within the IVOA, a MOC data product is a type of region data product.  Different region data products standards may include information regarding the shape, whether it is a source or background region, whether it is an inclusion or exclusion region, whether it can be edited/moved/rotated/deleted, region color and width, and associated metadata.
+
+Advanced data products (ObsCore calib_level > 2) may result from analyses of (possibly multiple) existing data products and may not want to attach region information to existing data products.  For example, a catalog such as the Chandra Source Catalog may identify (detect) tens of thousands of sources from an existing data product and then analyze properties for each of the sources; information about the source and background regions and cutouts is essential to correctly compute various source properties (for example, to compute aperture corrections for aperture photometry), but in general one would not want to add these region definitions to existing data products and would not want to duplicate this information in multiple other data products.  Recording the region information as queryable data products that work with current software is a sensible solution.
+
+The purpose of #region is to provide a data product type that can be used to query existing archives for those data products, irrespective of the internal format or serialization of the data product.
+
+Discussion:
+The region data product is intended to be universal for those facilities and archives that include region information recorded in data products that are separate from associated data.  There are some data products that record region information as FITS file extensions or perhaps an S_MOC extension.  In such cases, a separate region data product may not be necessary.
+
+We have intentionally not restricted the dimensionality of region data products.  However, most existing archival region data products are restricted to 2 spatial dimensions, although there are some that include spectral and temporal dimensions.
+
+
+
+
