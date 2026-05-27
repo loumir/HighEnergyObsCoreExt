@@ -535,17 +535,35 @@ For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \
 
 The messengers for \gls{HEA} observations may include particles other than the ones currently described in the UCD list.  Because some instruments can now distinguish electrons from positrons\footnote{For example, the Fermi-LAT instrument.}, as well antiprotons from protons\footnote{For example, the AMS-2 experiment.}, we also propose to add {\em phys.particle.positron\/} and {\em phys.particle.antiproton\/}, as well as {\em phys.particle.cosmicray\/} and unify them all under the {\em phys.particle\/} UCD hierarchy.
 
-For particle detectors, a wide range of different particles might have to be described. As is customary in particle physics, we propose to facilitate the use of the Particle Data Group Identifier\footnote{see \url{https://www.phy.bnl.gov/twister/bee/particles/}} as reference for any particle, describing {\em e.g.\/}, $\nu_{\tau}$ and $\bar{\nu}_{\tau}$ as {\em phys.particle.pdgid+16\/} and {\em phys.particle.\hbox{pdgid-16}\/} respectively.
+%Mireille clarify the usage of pdgid , as a value in the messenger column. 
+For particle detectors, a wide range of different particles might have to be described. As is customary in particle physics, we propose to facilitate the use of the Particle Data Group Identifier\footnote{see \url{https://www.phy.bnl.gov/twister/bee/particles/}} as reference for any particle. For instance  we can fill the 'messenger' column describing {\em e.g.\/}, $\nu_{\tau}$ and $\bar{\nu}_{\tau}$  with {\em pdgid+16\/} and {\em \hbox{pdgid-16}\/} respectively.
+% $\nu_{\tau}$ and $\bar{\nu}_{\tau}$ as {\em pdgid+16\/} and {\em \hbox{pdgid-16}\/}
 
-One should note that electrons are denoted by the UCD {\em phys.electron\/} in the current version of the UCD list \citep{2024ivoa.spec.1218C} and are inappropriately not grouped under the {\em phys.particle\/} hierarchy.  This causes some inconsistencies that could be solved by marking {\em phys.electron\/} (and {\em phys.electron.degen\/}) as obsolete or not recommended, and adding the term  {\em phys.particle.electron\/} to the UCD list.
+One should note that electrons are denoted by the UCD {\em phys.electron\/} in the current version of the UCD list \citep{2024ivoa.spec.1218C} and  not grouped under the {\em phys.particle\/} hierarchy. In order to improve the consistency of the {\em phys.particle branch} .
+That could be solved by marking {\em phys.electron\/} (and {\em phys.electron.degen\/}) as obsolete or not recommended, and adding the term  {\em phys.particle.electron\/} to the UCD list.
+However, as many data sets in the IVOA projects are already tagged with {\em phys.electron\/} this may require maintenance costs that should be evaluated . 
+The will be up to the IVOA to evaluate the benefice /cost ratio of such a change. 
+{\em phys.electron\/}  works anyway to tag an event as electron particle within the UCD list of terms. 
+% 
 
 Finally, we propose to add the most commonly used astronomical messenger to the UCD list as {\em phys.particle.photon\/}.
 
 \subsubsection{Statistical Parameters}
 
-Since statistical lower and upper limits play a significant role in \gls{HEA} data analysis, we propose adding new UCDs {\em stat.lowerlimit\/} and {\em stat.upperlimit\/} to explicitly identify data quantities as lower or upper limits.  We suggest that the existing UCDs {\em stat.min\/} and {\em stat.max\/} be restricted to meaning the minimum and maximum statistic, rather than the current definitions ``Minimum or lowest limit'' and ``Maximum or upper limit'', which blend statistical confidence intervals and limits into a  single UCD\null.  A specification of a confidence level is necessary for the user to interpret both confidence intervals and lower/upper limits meaningfully, and this level can be described by the existing UCD {\em stat.confidenceLevel\/}, providing we change the syntax code of the latter from `P' to `Q' so that the UCD can be attached as a secondary word to existing UCD {\em stat.error\/} or the proposed UCDs {\em stat.error.negative\/}, {\em stat.error.positive\/}, {\em stat.lowerlimit\/}, and {\em stat.upperlimit\/}.
+Since statistical lower and upper limits play a significant role in \gls{HEA} data analysis, we propose adding new UCDs {\em stat.lowerlimit\/} and {\em stat.upperlimit\/} to explicitly identify data quantities as lower or upper limits.  We suggest that the existing UCDs {\em stat.min\/} and {\em stat.max\/} be restricted to meaning the minimum and maximum statistic, rather than the current definitions ``Minimum or lowest limit'' and ``Maximum or upper limit'', which blend statistical confidence intervals and limits into a  single UCD\null. 
+
+ A specification of a confidence level is necessary for the user to interpret both confidence intervals and lower/upper limits meaningfully, and this level can be described by the existing UCD {\em stat.confidenceLevel\/}, providing we change the syntax code of the latter from `P' to `Q' so that the UCD can be attached as a secondary word to existing UCD {\em stat.error\/} .
+ 
+% mireille  We should use here the terms that have been recently discussed and approved by the semantics group . I would like the semantics discussions that happened to appear  in this note. 
+
+We also include  UCDs terms {\em stat.error.minus\/}, {\em stat.error.plus\/}, {\em stat.lowerlimit\/}, and {\em stat.upperlimit\/}.
 
 The shape of any statistical distribution is an essential quantity for interpreting the meaning of any statistical properties.  Too often a Gaussian distribution or a distribution that can be characterized by a simple set of moments ({\em e.g.\/}, mean, variance, skewness, kurtosis) are assumed, but in the extreme Poisson regime common in \gls{HEA} these assumptions are often invalid.  We propose adding a UCD {\em stat.distribution\/} to identify a quantity that defines the distribution of a statistical variable such as  a likelihood profile.
+% mireille This assumes that a column will contain a full set of data values. Is this desirable? 
+In fact it would make the UCD work as a term compatible to a data product type , so ambiguous in terms of role . 
+% in the  case we want to mention the kind of distribution this parameter describes , then the UCD for that would be : meta.name;stat.distribution and a new UCD ' stat.distribution' is needed to cover the idea of a statistical distribution.
+%This would be 
+%. S& {\em stat.distribution\/} & Related to a statistical distribution  \cr as inserted below 
 
 \subsubsection{Evolution of UCD list}
 
@@ -577,16 +595,19 @@ E & {\em phot.flux.particle.radiance\/} & Particle flux radiance (dimensionality
 E & {\em phot.flux.particle.sb\/} & Particle flux surface brightness (dimensionality: $\rm [L^{-2}\,T^{-1}\,\hbox{sr}^{-1}]$)  \cr
 S & {\em phys.particle.antiprotron\/}  & Related to anti-proton \cr
 S & {\em phys.particle.cosmicray\/} & Related to cosmic rays particles  \cr
-S & {\em phys.particle.electron\/} & Related to electron  \cr
+%S & {\em phys.particle.electron\/} & Related to electron  \cr
 S & {\em phys.particle.photon\/} & Related to photon  \cr
 S & {\em phys.particle.positron\/} & Related to positron  \cr
-S & {\em phys.particle.pdgid\/} & Particle Data Group Identifier \cr
-S & {\em phys.particle.pdgid$\pm$XX\/} & Related to a particle with PDG ID $\pm$XX  \cr
-P & {\em stat.distribution\/} & Type or shape of statistical distribution  \cr
-P & {\em stat.error.negative\/} & Negative statistical error  \cr
-P & {\em stat.error.positive\/}  & Positive statistical error  \cr
-P & {\em stat.lowerlimit\/}  & Lower limit \cr
-P & {\em stat.upperlimit\/}  & Upper limit \cr
+% Mireille we cannot have these terms in the UCD tree ; that would imply importing all possible encoding of any kind 
+%S & {\em phys.particle.pdgid\/} & Particle Data Group Identifier \cr
+%S & {\em phys.particle.pdgid$\pm$XX\/} & Related to a particle with PDG ID $\pm$XX  \cr
+%mireille
+S& {\em stat.distribution\/} & Related to a statistical distribution  \cr
+%mireille update to latest discussed term 
+P & {\em stat.error.minus\/} & Negative statistical error  \cr
+P & {\em stat.error.plus\/}  & Positive statistical error  \cr
+P & {\em stat.lowerlimit\/}  & Lower limit value \cr
+P & {\em stat.upperlimit\/}  & Upper limit  value \cr
 \sptablerule
 \caption{Proposed New UCD Entries}
 \label{tab:he_ucds}
@@ -602,6 +623,7 @@ E & {\em phot.count\/} & Count flux (dimensionality: $\rm [L^{-2}\,T^{-1}]$)  \c
 E & {\em phot.fluence\/} & Radiant photon energy received by a surface per unit area or irradiance of a surface integrated over time of irradiation (dimensionality: $\rm [L^{-2}]$)  \cr
 Q & {\em phot.flux.bol\/} & Bolometric flux (dimensionality: $\rm [M\,T^{-3}]$)  \cr
 E & {\em phot.radiance\/} & Radiance as energy flux per solid angle (dimensionality: $\rm  [M\,T^{-3}\,\hbox{sr}^{-1}]$)  \cr
+%mir the case of electron would be in a VEP to discuss the backward compatibility of this change 
 S & {\em phys.electron\/} & Electron (not recommended/deprecate) \cr
 S & {\em stat.min\/}  & Minimum value \cr
 S & {\em stat.max\/}  & Maximum value \cr
@@ -609,6 +631,10 @@ S & {\em stat.max\/}  & Maximum value \cr
 \caption{Proposed Revised UCD Entries}
 \label{tab:upgrade_he_ucds}
 \end{longtable}
+
+Note that the introduction of dimensional equation in the definition of UCD terms is a useful feature 
+to compare quantities across various spectral domains. 
+
 
 \subsection{MIME-type Enhancements}\label{sec:mimetypes}
 
@@ -627,13 +653,12 @@ This section summarizes the proposal for the \gls{HEA} extension of ObsCore.  We
 
 \begin{landscape}
 \begin{center}
-%start mireille ucd update
 \begin{longtable}{ | m{0.15\linewidth} | m{0.23\linewidth} | m{0.07\linewidth} | m{0.07\linewidth} | m{0.4\linewidth} | m{0.05\linewidth} |}
 \hline
 
 {\centering \bf Column Name}     &{\centering \bf UCD} &{\centering \bf Unit} &{\centering \bf Type} &{\centering \bf Description} &{\centering \bf MAN}\\
 \hline
- ev\_xel & \ucd{meta.number;obs.event} &  unitless & int & {Number of events in an event\_list }& NO \\
+ ev\_xel & \ucd{meta.number;instr.detection} &  unitless & int & {Number of events in an event\_list }& NO \\
 \hline
  s\_ref\_energy &  \ucd{meta.ref;em.energy;pos} & eV & float & {Energy at which the ObsCore spatial characterization attributes s\_fov , s\_region, s\_resolution are defined} & NO \\
 \hline
@@ -655,56 +680,14 @@ This section summarizes the proposal for the \gls{HEA} extension of ObsCore.  We
 \hline
   analysis\_mode & \ucd{meta.code;obs.param} & unitless & string &{Data reduction/analysis mode}& NO \\
 \hline
-  event\_type & \ucd{meta.code.qual;obs.event} & unitless & string &{Data quality flag of the events ({\em e.g.\/}, ``good psf'', ``good rejection'', ``Nhit (100,200)''} & NO \\
+  event\_type & \ucd{meta.code.qual;instr.detection} & unitless & string &{Data quality flag of the events ({\em e.g.\/}, ``good psf'', ``good rejection'', ``Nhit (100,200)''} & NO \\
 \hline
-  messenger & \ucd{TBD} & unitless & string &{Messenger particle type ({\em e.g.\/}, ``photon'', ``cosmic-ray'', ``neutrino'', ``pdgid-13'')} & NO \\
+ messenger & \ucd{meta.name;phys.particle} & unitless & string &{Messenger particle type ({\em e.g.\/}, ``photon'', ``cosmic-ray'', ``neutrino'', ``pdgid-13'')} & NO \\
 \hline
 \end{longtable}
 %\end{center}
-% end mireille ucd update
 \end{center}
 \end{landscape}
-
-%\begin{landscape}
-%\begin{center}
-%%\begin{longtable}{ | m{2.5cm} | m{3em} | m{3em} | m{3em} | m{6cm} | m{2.3em} |}
-%\begin{longtable}{ | p{0.125\linewidth} | p{0.075\linewidth} | p{0.075\linewidth} | p{0.075\linewidth} | p{0.6\linewidth} | p{0.05\linewidth} |}
-%\hline
-%{\centering \bf Column Name}     &{\centering \bf UType} &{\centering \bf Unit} &{\centering \bf Type} &{\centering \bf Description} &{\centering \bf MAN}\\
-%\hline
-%{\em ev\_xel\/} & TBD &  unitless & integer & Number of events in an event list & NO \\
-%\hline
-%{\em s\_ref\_energy\/} & TBD & eV & double & Energy at which the ObsCore spatial characterization attributes {\em s\_fov\/}, {\em s\_region\/}, {\em s\_resolution\/} are defined & NO \\
-%\hline
-%{\em em\_ref\_energy\/}  & TBD & eV & double & Energy at which the ObsCore spectral characterization attributes {\em em\_res\_power\/}, {\em em\_resolution} are defined & NO \\
-%\hline
-%{\em s\_ref\_oaa\/} & TBD & deg & double & Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spatial characterization attributes {\em s\_fov\/}, {\em s\_region\/}, {\em s\_resolution\/} are defined & NO \\
-%\hline
-%{\em em\_ref\_oaa\/} & TBD & deg & double & Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spectral characterization attributes {\em em\_res\_power\/}, {\em em\_resolution\/} are defined & NO \\
-%\hline
-%{\em t\_intervals\/} & TBD & unitless & string & List of observation intervals or stable/good time intervals describing the exact observation time coverage as a TMOC  & NO \\
-%\hline
-%{\em energy\_min\/} & TBD & eV & double & Energy associated to the ObsCore attribute {\em em\_max\/}, describing the minimum energy of the dataset & NO \\
-%\hline
-%{\em energy\_max\/} & TBD & eV & double & Energy associated to the ObsCore attribute {\em em\_min\/}, describing the maximum energy of the dataset & NO \\
-%\hline
-%{\em obs\_mode\/} & TBD & unitless & string &  Observation mode of an observation & NO \\
-%\hline
-%{\em tracking\_type\/} & TBD & unitless & string & Tracking type of an observation & NO \\
-%\hline
-%{\em scan\_mode\/} & TBD & unitless & string & Scan mode of an observation & NO \\
-%\hline
-%{\em pointing\_mode\/} & TBD & unitless & string & Pointing mode of an observation & NO \\
-%\hline
-%{\em analysis\_mode\/} & TBD & unitless & string & Data reduction/analysis mode & NO \\
-%\hline
-%{\em event\_type\/} & TBD & unitless & string & Event subset indicator ({\em e.g.\/}, data quality flag for the events) & NO \\
-%\hline
-%\caption{Attributes for the \gls{HEA} Extension of ObsCore}
-%\label{tab:hea_ext_attr}
-%\end{longtable}
-%\end{center}
-%\end{landscape}
 
 \pagebreak
 %\printglossaries
