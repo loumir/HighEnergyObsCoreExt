@@ -513,11 +513,11 @@ We propose correcting and extending the current list of UCD gamma-ray domain def
 
 \subsubsection{Instrument-related Quantities}
 
-We propose to add a new UCD {\em instr.event\/} as the base of the hierarchy to describe instrument-related properties of particle events detected by \gls{HEA} detectors.  Initially, we propose a small set of event-related UCDs that identify key properties that are particularly important for \gls{HEA} data analysis.
+We propose to add a new UCD {\em instr.detection\/} as the base of the hierarchy to describe instrument-related properties of particle events detected by \gls{HEA} detectors.  Initially, we propose a small set of event-related UCDs that identify key properties that are particularly important for \gls{HEA} data analysis.
 
 \paragraph{Event Grade}
 
-For imaging X-ray instruments (especially those based on CCD detectors), detected events typically deposit charge into more than a single detector pixel.  The events are assigned a ``grade'' based on how charge is deposited into the central pixel and surrounding pixels, and the grade information is essential for data analysis since typically only a subset of grades will correspond to valid events.  We propose to add a new UCD {\em instr.event.grade\/} that identifies event grades.
+For imaging X-ray instruments (especially those based on CCD detectors), detected events typically deposit charge into more than a single detector pixel.  The events are assigned a ``grade'' based on how charge is deposited into the central pixel and surrounding pixels, and the grade information is essential for data analysis since typically only a subset of grades will correspond to valid events.  We propose to add a new UCD {\em meta.code.class;instr.detection\/} that identifies event grades.
 
 \paragraph{Pulse Height}
 
@@ -530,7 +530,7 @@ There is currently no UCD defined for a raw pulse height amplitude measure like 
 
 \paragraph{Event Type}
 
-For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \S~\ref{sec:evttype}) that can be mandatory for some data releases.  We propose to add a new UCD {\em instr.event.type\/} that identifies these data values.
+For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \S~\ref{sec:evttype}) that can be mandatory for some data releases.  We propose to use a combined UCD {\em meta.code.class;instr.detection\/} that identifies these data values.
 
 \subsubsection{Physical Quantities}
 
@@ -576,10 +576,10 @@ The proposed new UCD entries are listed in Table~\ref{tab:he_ucds} with their de
 S & {\em em.gamma.he\/}   & High-Energy gamma ray (100 MeV -- 10 GeV)  \cr
 S & {\em em.gamma.vhe\/}  & Very-High-Energy gamma ray (10 GeV -- 100 TeV)  \cr
 S & {\em em.gamma.uhe\/}  & Ultra-High-Energy gamma ray ($>100$ TeV)  \cr
-Q & {\em instr.event\/} & Particle event detection \cr
-Q & {\em instr.event.grade\/} & Particle event grade \cr
+Q & {\em instr.detection\/} & Particle event detection \cr
+%Q & {\em instr.event.grade\/} & Particle event grade \cr 
 Q & {\em instr.pulse\/} & Pulse height amplitude measure  \cr
-Q & {\em instr.event.type\/} & Particle event type \cr
+%Q & {\em instr.event.type\/} & Particle event type \cr
 E & {\em phot.count.density\/} & Count flux density (dimensionality: $\rm [L^{-2}\,T^{-1}\,E^{-1}]$)  \cr
 E & {\em phot.count.density.sb\/} & Count flux density surface brightness (dimensionality: $\rm [L^{-2}\,T^{-1}\,E^{-1}\,\hbox{sr}^{-1}]$)  \cr
 E & {\em phot.count.radiance\/} & Count flux radiance (dimensionality: $\rm [L^{-2}\,T^{-1}\,\hbox{sr}^{-1}]$)  \cr
