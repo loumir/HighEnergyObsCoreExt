@@ -517,7 +517,7 @@ We propose to add a new UCD {\em instr.detection\/} as the base of the hierarchy
 
 \paragraph{Event Grade}
 
-For imaging X-ray instruments (especially those based on CCD detectors), detected events typically deposit charge into more than a single detector pixel.  The events are assigned a ``grade'' based on how charge is deposited into the central pixel and surrounding pixels, and the grade information is essential for data analysis since typically only a subset of grades will correspond to valid events.  We propose to add a new UCD {\em meta.code.class;instr.detection\/} that identifies event grades.
+For imaging X-ray instruments (especially those based on CCD detectors), detected events typically deposit charge into more than a single detector pixel.  The events are assigned a ``grade'' based on how charge is deposited into the central pixel and surrounding pixels, and the grade information is essential for data analysis since typically only a subset of grades will correspond to valid events.  We propose to use these combined UCD terms {\em meta.code.class;instr.detection\/} to provide the UCD string for the {\bf event\_grade} column.
 
 \paragraph{Pulse Height}
 
@@ -530,7 +530,7 @@ There is currently no UCD defined for a raw pulse height amplitude measure like 
 
 \paragraph{Event Type}
 
-For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \S~\ref{sec:evttype}) that can be mandatory for some data releases.  We propose to use a combined UCD {\em meta.code.class;instr.detection\/} that identifies these data values.
+For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \S~\ref{sec:evttype}) that can be mandatory for some data releases.  We propose to use a combined UCD {\em meta.code.class;instr.detection\/} to tag the proposed {\bf event_type} parameter.
 
 \subsubsection{Physical Quantities}
 
@@ -544,7 +544,7 @@ One should note that electrons are denoted by the UCD {\em phys.electron\/} in t
 That could be solved by marking {\em phys.electron\/} (and {\em phys.electron.degen\/}) as obsolete or not recommended, and adding the term  {\em phys.particle.electron\/} to the UCD list.
 However, as many data sets in the IVOA projects are already tagged with {\em phys.electron\/} this may require maintenance costs that should be evaluated . 
 It will be up to the IVOA to evaluate the benefice/cost ratio of such a change. 
-The UCD term {\em phys.electron\/} is available anyway and can be used to tag an event related to electron particles.
+%The UCD term {\em phys.electron\/} is available anyway and can be used to tag an event related to electron particles.
 
 Finally, we propose to add the most commonly used astronomical messenger to the UCD list as {\em phys.particle.photon\/}.
 
