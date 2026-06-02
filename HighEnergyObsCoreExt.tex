@@ -551,7 +551,7 @@ Finally, we propose to add the most commonly used astronomical messenger to the 
 \subsubsection{Statistical Parameters}
 
 Since statistical lower and upper limits play a significant role in \gls{HEA} data analysis, we propose adding new UCDs {\em stat.lowerlimit\/} and {\em stat.upperlimit\/} to explicitly identify data quantities as lower or upper limits.  We suggest that the existing UCDs {\em stat.min\/} and {\em stat.max\/} be restricted to meaning the minimum and maximum statistic, rather than the current definitions ``Minimum or lowest limit'' and ``Maximum or upper limit'', which blend statistical confidence intervals and limits into a  single UCD\null. 
-
+We also propose new UCD terms {\em stat.error.minus\/} and {\em stat.error.plus\/} to identify the more negative and more positive statistical errors to handle the common case of asymmetric errors.
  A specification of a confidence level is necessary for the user to interpret both confidence intervals and lower/upper limits meaningfully, and this level can be described by the existing UCD {\em stat.confidenceLevel\/}, providing we change the syntax code of the latter from `P' to `Q' so that the UCD can be attached as a secondary word to existing UCD {\em stat.error\/}, and the newly proposed UCDs {\em stat.error.minus\/}, {\em stat.error.plus\/}, {\em stat.lowerlimit\/}, and {\em stat.upperlimit\/}.
  
 % mireille  We should use here the terms that have been recently discussed and approved by the semantics group . I would like the semantics discussions that happened to appear  in this note. 
