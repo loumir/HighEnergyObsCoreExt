@@ -157,7 +157,7 @@ We process this VOTABLE to access to the data:
 
 \begin{enumerate}[(i)]
   \item for each row of the query output, get the ``obs\_id'' and the ``access\_url'' of the DataLink describing the ObsCore dataset entry,
-  \item get the Datalink VOTable showing the datasets associated to this entry
+  \item get the DataLink VOTable showing the datasets associated to this entry
   \item for each row of the DataLink VOTable, get the ``content\_qualifier'' and the ``access\_url'' column's value,
   \item download the data associated to each ``access\_url'' value.
 \end{enumerate}
