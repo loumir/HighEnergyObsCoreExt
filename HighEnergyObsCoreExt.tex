@@ -513,11 +513,11 @@ We propose correcting and extending the current list of UCD gamma-ray domain def
 
 \subsubsection{Instrument-related Quantities}
 
-We propose to add a new UCD {\em instr.detection\/} as the base of the hierarchy to describe instrument-related properties of particle events detected by \gls{HEA} detectors.  Initially, we propose a small set of event-related UCDs that identify key properties that are particularly important for \gls{HEA} data analysis.
+We propose to add a new UCD {\em instr.detection\/} as the base of the hierarchy to describe instrument-related properties of particle events detected by \gls{HEA} detectors.  To be more precise, an event in the event list will be tagged as {\em instr.detection;phys.particle\/}. Initially, we propose a small set of event-related UCDs that identify key properties that are particularly important for \gls{HEA} data analysis.
 
 \paragraph{Event Grade}
 
-For imaging X-ray instruments (especially those based on CCD detectors), detected events typically deposit charge into more than a single detector pixel.  The events are assigned a ``grade'' based on how charge is deposited into the central pixel and surrounding pixels, and the grade information is essential for data analysis since typically only a subset of grades will correspond to valid events.  We propose to use these combined UCD terms {\em meta.code.class;instr.detection\/} to provide the UCD string for the {\bf event\_grade} column.
+For imaging X-ray instruments (especially those based on CCD detectors), detected events typically deposit charge into more than a single detector pixel.  The events are assigned a ``grade'' based on how charge is deposited into the central pixel and surrounding pixels, and the grade information is essential for data analysis since typically only a subset of grades will correspond to valid events.  We propose to use these combined UCD terms {\em meta.code.class;instr.detection;phys.particle\/} to provide the UCD string for the {\bf event\_grade} column.
 
 \paragraph{Pulse Height}
 
@@ -530,7 +530,7 @@ There is currently no UCD defined for a raw pulse height amplitude measure like 
 
 \paragraph{Event Type}
 
-For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \S~\ref{sec:evttype}) that can be mandatory for some data releases.  We propose to use a combined UCD {\em meta.code.class;instr.detection\/} to tag the proposed {\bf event\_type} parameter.
+For \gls{VHE} (and GeV) gamma-ray data, there is the notion of event type (see \S~\ref{sec:evttype}) that can be mandatory for some data releases.  We propose to use a combined UCD {\em meta.code.qual;instr.detection;phys.particle\/} to tag the proposed {\bf event\_type} parameter.
 
 \subsubsection{Physical Quantities}
 
@@ -657,7 +657,7 @@ This section summarizes the proposal for the \gls{HEA} extension of ObsCore.  We
 
 {\centering \bf Column Name}     &{\centering \bf UCD} &{\centering \bf Unit} &{\centering \bf Type} &{\centering \bf Description} &{\centering \bf MAN}\\
 \hline
- ev\_xel & \ucd{meta.number;instr.detection} &  unitless & int & {Number of events in an {\bf he-event-list}}& NO \\
+ ev\_xel & \ucd{meta.number;instr.detection;phys.particle} &  unitless & int & {Number of events in an {\bf he-event-list}}& NO \\
 \hline
  s\_ref\_energy &  \ucd{meta.ref;em.energy;pos} & eV & float & {Energy at which the ObsCore spatial characterization attributes s\_fov , s\_region, s\_resolution are defined} & NO \\
 \hline
@@ -679,7 +679,7 @@ This section summarizes the proposal for the \gls{HEA} extension of ObsCore.  We
 \hline
   analysis\_mode & \ucd{meta.code;obs.param} & unitless & string &{Data reduction/analysis mode}& NO \\
 \hline
-  event\_type & \ucd{meta.code.qual;instr.detection} & unitless & string &{Data quality flag of the events ({\em e.g.\/}, ``good psf'', ``good rejection'', ``Nhit (100,200)''} & NO \\
+  event\_type & \ucd{meta.code.qual;instr.detection;phys.particle} & unitless & string &{Data quality flag of the events ({\em e.g.\/}, ``good psf'', ``good rejection'', ``Nhit (100,200)''} & NO \\
 \hline
  messenger & \ucd{meta.name;phys.particle} & unitless & string &{Messenger particle type ({\em e.g.\/}, ``photon'', ``cosmic-ray'', ``neutrino'', ``pdgid-13'')} & NO \\
 \hline
