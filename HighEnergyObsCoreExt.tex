@@ -363,7 +363,7 @@ We propose to add an optional attribute {\em messenger\/} that specifies the mes
 	\item \texttt{proton}: the messenger is a proton or anti-proton;
 	\item \texttt{pdgid{\em $\pm$nn\/}}: the messenger is a particle whose PDG ID\footnote{Particle Data Group Identifier, see \url{https://www.phy.bnl.gov/twister/bee/particles/}} is {\em $\pm$nn\/}.
 \end{itemize}
-The value ``pdgid{\em $\pm$nn\/}'' (where the sign is mandatory) allows a messenger particle not listed in the table to be specified by reporting the particle's Particle Data Group Identifier as {\em $\pm$nn\/}.  For example, a muon, $\mu^{-}$, may be specified as ``pdgid+13''.   We note that permissible {\em messenger\/} values will vary from facility to facility and from instrument to instrument.
+The value ``pdgid{\em $\pm$nn\/}'' (where the sign is mandatory) allows a messenger particle not listed in the table to be specified by reporting the particle's Particle Data Group Identifier as {\em $\pm$nn\/}.  For example, a muon, $\mu^{-}$, may be specified as ``pdgid+13''. We note that permissible {\em messenger\/} values will vary from facility to facility and from instrument to instrument.
 
 \subsection{Additional Columns}
 
@@ -520,9 +520,6 @@ For imaging X-ray instruments (especially those based on CCD detectors), detecte
 For many X-ray and gamma-ray instruments, the signal observed in a given detector spectral channel is the result of event counting and would typically be recorded as a Pulse Height Amplitude (PHA), or perhaps a Pulse Invariant (PI) value that is calculated from PHA by applying an appropriate gain calibration.  The PHA (or PI) can be related to the incident particle energy by applying the appropriate {\bf response-function}, and higher data calibration level products may replace or augment these values with quantities such as energy, or perhaps particle or energy flux.
 
 There is currently no UCD defined for a raw pulse height amplitude measure like PHA (or PI). PHA is such an important quantity to \gls{HEA} datasets that we propose adding a new UCD {\em instr.pulse\/} for these raw data values, that can be combined with more general UCD terms to describe parameters of the pulse, like {\em instr.pulse;stat.max}, {\em instr.pulse;arith.sum} as an integrated quantity, {\em instr.pulse;stat.fwmh}, etc.  We note that the background signal (both of instrumental and cosmological origin) may be significant for many \gls{HEA} detectors and so the detected events may be unrelated to any observed source on the sky.  For Cherenkov neutrino detectors, this quantity might refer to the number of observed photon hits from secondary particle photon generation.
-
-%mireille : discarded choice now; we should go forward this step 
-%One previously proposed solution suggested using the combination of existing UCDs {\em src.var.amplitude;src.var.pulse;stat.uncalib\/} for PHA, but this is not appropriate since the connection to {\em src\/} (``observed source viewed on the sky'') is misleading and {\em src.var.amplitude\/} is defined as the ``amplitude of variation'' of the source which is a completely separate concept from an astronomical perspective.
 
 \paragraph{Event Type}
 
