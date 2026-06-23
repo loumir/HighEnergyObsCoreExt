@@ -1,6 +1,6 @@
 
 %\newpage
-
+\newcommand{\blinks}{\{links\}}
 % François Version 2: 
 \section{Extending access to new types of data products  in ObsTAP services}
 %\section{Access methods for data related to sky datasets discovered with ObsTAP}
@@ -11,7 +11,7 @@ As discussed in the previous section, high energy data distribution requires a s
 Event lists without corresponding response functions do not allow data interpretation. That’s the reason why hea-event-lists are often gathered in the same package with the response function in an “hea-event-bundle” with a specific format (OGIP, GADF or VODF).  In addition, the High Energy astronomical community has developed a lot of probabilistic analysis methods to analyse and extract information  from the event lists.  They cannot all be described by ObsCore parameters due to the richness and  complexity of their parameters. They are listed in section~\ref{sec:voc_product_type}. Access to this category of data can be managed similarly to response functions in some cases, as proposed in section \ref{sec:analysis-dp}.  
 
 \subsection{Direct access to an hea-event-bundle}
-	The simplest method to access hea-event-list and associated response function is to provide a link to an hea-event-bundle package; this can be done by providing an URL to the package in the {\em access\_url \/} FIELD of the ObsCore (or ObsCore + extension) table. The {\em access\_format \/} FIELD will contain the appropriate MIME type for the bundle package (for example x-fits-ogip, x-fits-gadf, or x-fits-vodf). Table~\ref{tab:bundle} shows an excerpt of an ObsCore result and illustrates this method. This method is not directly adapted for analysis data products but can be combined with methods described below in~\ref{sec:datalink} for a common access to the bundle and analysis  data products.
+	The simplest method to access hea-event-list and associated response function is to provide a link to an hea-event-bundle package; this can be done by providing an URL to the package in the {\em access\_url \/} FIELD of the ObsCore (or ObsCore + extension) table. The {\em access\_format \/} FIELD will contain the appropriate MIME type for the bundle package (for example x-fits-ogip, x-fits-gadf, or x-fits-vodf). Table~\ref{tab:bundle} shows an excerpt of an ObsCore result and illustrates this method. This method  can be combined with methods described below in~\ref{sec:datalink} for a common access to the bundle and other resources such as previews or some specific analysis data products.
 
 
 %\begin{landscape}
@@ -97,19 +97,19 @@ Event lists without corresponding response functions do not allow data interpret
 \subsection{Access via DataLink}
 \label{sec:datalink}
 
-DataLink \citep{2023ivoa.spec.1215B} allows to relate a main record provided by a service (ObsTAP, SSA/SIA or a catalogue service) to a various number of links which complement the information contained in the record.
+DataLink \citep{2023ivoa.spec.1215B} allows to relate a main record provided by a service (ObsTAP, SSA/SIA or a catalogue service) to a various number of links which complement the information contained in the record. An implementation note \citep{2024ivoa.note.datalink} gives some hints on how to use this standard.
 There are at least three ways to implement this standard for hea-event-lists depending how many steps are used in the access method to the associated datasets.\\
  	Subsection~\ref{sec:datalinkinobs} is a full 2-step approach. \\
  	Subsection~\ref{sec:datalinksd}  allows both direct access to hea-event-list and 2-step access to the additional material.\\
- 	Subsection~\ref{sec:datalinktap} is not described in the DataLink standard but is fully consistant with TAP and the DataLink {links} endpoint response specification. It allows direct access to both hea-event-list and additional material, like response files, or analysis data products.\\
+ 	Subsection~\ref{sec:datalinktap} is not described in the DataLink standard but is fully consistant with TAP and the DataLink \blinks\ endpoint response specification. It allows direct access to both hea-event-list and additional material, like response files, or analysis data products.\\
 	 
 	\subsubsection{From an hea-event-list in ObsCore : DataLink to access the event list itself and response functions via {\em access\_url \/} }
 \label{sec:datalinkinobs}
-        	The { \em data\_product type \/} exposed in ObsCore is “hea-event-list” and the DataLink response itself points to the event list itself and to the various response functions individually. This solution allows retrieval of data with explicit access to the various  components  of a “bundle” which doesn't need to be packaged in that case. In addition to response functions,  analysis data products can also be linked to the event list this way. Figure~\ref{fig:obscoretodl} shows an ObsCore record which points to a DataLink response illustrating this method.  Table~\ref{tab:datalink} shows this DataLink response content.
+        	The { \em data\_product type \/} exposed in ObsCore is “hea-event-list” and the DataLink \blinks\ endpoint response  points to the event list itself and to the various response functions individually. This solution allows retrieval of data with explicit access to the various  components  of a “bundle” which doesn't need to be packaged in that case. In addition to response functions,  analysis data products can also be linked to the event list this way. Figure~\ref{fig:obscoretodl} shows an ObsCore response where the selected record points to a \blinks\ endpoint response illustrating this method.  Table~\ref{tab:datalink} shows this DataLink response content.
 \begin{figure}
 
 \includegraphics[width=1.5\textwidth, angle=90]{Obscore+datalink.png}
-\caption{Selection of HESS data from Aladin Desktop: For the selected source, an ObsCore record points to a DataLink response, with 8 links provided in the white box. The content of this DataLink table is described in Table \ref{tab:datalink}. }
+\caption{Selection of HESS data from Aladin Desktop: In the galactic center area, an ObsTAP query has been performed and HESS datasets are discovered.  One of the ObsCore record has been selected and points to a DataLink response, with 8 links provided in the white box. The content of this DataLink table is described in Table \ref{tab:datalink}. }
 \label{fig:obscoretodl}
 \end{figure}
 
@@ -161,14 +161,16 @@ There are at least three ways to implement this standard for hea-event-lists dep
 </RESOURCE>
 \end{verbatim}
 
-        	In this case the service descriptor provides the root URL to the datalink endpoint. The full datalink URL for a specific row (or group of rows) is then built by adding the content of the referred ID FIELD  this way: \\ http://provider.org/dataservice/datalink?ID={\it referred\_ID\_FIELD\_content}.
-      	It is important to notice that it is not mandatory that the {\it referred\_ID\_FIELD} be {\em obs\_publisher\_did \/}. It can be  {\em obs\_id \/}, or any free identifier FIELD allowing to group several rows together. For example, referring to {\em obs\_id \/} will allow all the datasets belonging to the same observation to be bound to the same datalink response.   
+        	In this case the service descriptor provides the root URL to the DataLink \blinks\ endpoint. The full \blinks\ endpoint URL for a specific row (or group of rows) is then built by adding the content of the referred ID FIELD  this way: \\ http://provider.org/dataservice/datalink?ID={\it referred\_ID\_FIELD\_content}.
+      	It is important to notice that it is not mandatory that the {\it referred\_ID\_FIELD} be {\em obs\_publisher\_did \/}. It can be  {\em obs\_id \/}, or any free identifier FIELD allowing to group several rows together. For example, referring to {\em obs\_id \/} will allow all the datasets belonging to the same observation to be bound to the same \blinks\ endpoint response. 
+      	
+      	This method is implemented in many archive services such as ESO, CADC, GAVO, HEASARC and even VizieR.    
 	
  \subsubsection{Datalink table in a TAP  service / join with ObsCore table}
  \label{sec:datalinktap}
 
-The data link table can also be implemented as a TAP table of its own. This table will contain  columns describing   all the links (hea-event-list, response functions, analysis data products) desirable for any dataset  record in the \texttt{ivoa.obscore} table of ObsTAP service.
-A direct access to the ObsCore record and the links provided by the {links} endpoint response table is then possible.
+The \blinks\ endpoint table can also be implemented as a TAP table of its own. This table will contain  columns describing   all the links (hea-event-list, response functions, analysis data products) desirable for any dataset  record in the \texttt{ivoa.obscore} table of ObsTAP service.
+A direct access to the ObsCore record and the links provided by the \blinks\ endpoint response table is then possible.
   An identifier column would be common in the ObsCore table and the DataLink table and used as a keyreference.
 Suppose we have  {\em dataproduct\_type \/} = ‘hea-event-list’ in the \texttt{ivoa.obscore table}, and we we name this data link table “datalink.response”, we can then query the TAP service this way in order to access directly to the hea-event-list product:
 
@@ -203,7 +205,7 @@ SELECT * FROM ivoa.obscore
  AND ( semantics = '#auxiliary')
  AND (content_qualifier = 'bkgimage')
 \end{verbatim}
-One caveat : if response functions and other auxiliary or analysis data are common to a full observation (instead of dataset) or even worse to several observations, then the DataLink-like table will repeat the information several times. To avoid that it's possible to create an additional index column (for example  {\em dl\_response\_id \/} or whatever appropriate term) and modify the first query this way (for others it would be similar of course) :
+One caveat : if response functions and other auxiliary or analysis data are common to a full observation (instead of dataset) or even worse to several observations, then the DataLink-like table will repeat the information several times. To avoid that it's possible to create an additional index column (for example  {\em dl\_association\_id \/} or whatever appropriate term) and modify the first query this way (for others it would be similar of course) :
 \begin{verbatim}
 SELECT * FROM ivoa.obscore
  NATURAL JOIN ivoa.obscore_hea
