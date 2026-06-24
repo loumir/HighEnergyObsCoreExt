@@ -89,7 +89,7 @@ Event lists without corresponding response functions do not allow data interpret
 \sptablerule
 \textbf{pol\_xel}& -1&-1\\
 \sptablerule
-\caption{ObsCore response for hea-event-bundles\\ \tiny{inspired from H.E.S.S ObsTAP prototype at Paris Observatory }}
+\caption{ObsCore response for hea-event-bundles\\ \footnotesize{inspired from H.E.S.S ObsTAP prototype at Paris Observatory }}
 \label{tab:bundle}
 \end{longtable}
 %\end{landscape}
@@ -99,9 +99,11 @@ Event lists without corresponding response functions do not allow data interpret
 
 DataLink \citep{2023ivoa.spec.1215B} allows to relate a main record provided by a service (ObsTAP, SSA/SIA or a catalogue service) to a various number of links which complement the information contained in the record. An implementation note \citep{2024ivoa.note.datalink} gives some hints on how to use this standard.
 There are at least three ways to implement this standard for hea-event-lists depending how many steps are used in the access method to the associated datasets.\\
- 	Subsection~\ref{sec:datalinkinobs} is a full 2-step approach. \\
- 	Subsection~\ref{sec:datalinksd}  allows both direct access to hea-event-list and 2-step access to the additional material.\\
- 	Subsection~\ref{sec:datalinktap} is not described in the DataLink standard but is fully consistant with TAP and the DataLink \blinks\ endpoint response specification. It allows direct access to both hea-event-list and additional material, like response files, or analysis data products.\\
+ \begin{itemize}
+	\item Subsection~\ref{sec:datalinkinobs} is a full 2-step approach. \\
+	 \item Subsection~\ref{sec:datalinksd}  allows both direct access to hea-event-list and 2-step access to the additional material.\\
+ 	\item Subsection~\ref{sec:datalinktap} is not described in the DataLink standard but is fully consistant with TAP and the DataLink \blinks\ endpoint response specification. It allows direct access to both hea-event-list and additional material, like response files, or analysis data products.\\
+ \end{itemize}
 	 
 	\subsubsection{From an hea-event-list in ObsCore : DataLink to access the event list itself and response functions via {\em access\_url \/} }
 \label{sec:datalinkinobs}
@@ -109,7 +111,7 @@ There are at least three ways to implement this standard for hea-event-lists dep
 \begin{figure}
 
 \includegraphics[width=1.5\textwidth, angle=90]{Obscore+datalink.png}
-\caption{Selection of HESS data from Aladin Desktop: In the galactic center area, an ObsTAP query has been performed and HESS datasets are discovered.  One of the ObsCore record has been selected and points to a DataLink response, with 8 links provided in the white box. The content of this DataLink table is described in Table \ref{tab:datalink}. }
+\caption{Selection of HESS data from Aladin Desktop: In the galactic center area, an ObsTAP query has been performed and HESS datasets are discovered.  One of the ObsCore record has been selected and points to a DataLink response, with 8 links provided in the white box. The content of this DataLink table is described in Table~\ref{tab:datalink}. }
 \label{fig:obscoretodl}
 \end{figure}
 
@@ -271,7 +273,8 @@ Implementing this extra response table will allow to write queries like :
 \end{enumerate}
 
 When using the response table defined in Table \ref{tab:response_table}, 
-we can join the \texttt{ivoa.obscore} table with the \texttt{ivoa.response}  table on the two keys  {\em obs\_id \/} and {\em obs\_collection \/} for instance, as in : 
+we can join the \texttt{ivoa.obscore} table with the \texttt{ivoa.response} table on 
+the two keys  {\em obs\_id \/} and {\em obs\_collection \/} for instance, as in : 
 \begin{verbatim}
 SELECT obs_publisher_did, s_ra, s_dec, s_fov, t_min, t_max, 
 energy_min, energy_max, access_url, access_format, 
