@@ -174,7 +174,7 @@ There are at least three ways to implement this standard for hea-event-lists dep
 The \blinks\ endpoint table can also be implemented as a TAP table of its own. This table will contain  columns describing   all the links (hea-event-list, response functions, analysis data products) desirable for any dataset  record in the \texttt{ivoa.obscore} table of ObsTAP service.
 A direct access to the ObsCore record and the links provided by the \blinks\ endpoint response table is then possible.
   An identifier column would be common in the ObsCore table and the DataLink table and used as a keyreference.
-Suppose we have  {\em dataproduct\_type \/} = ‘hea-event-list’ in the \texttt{ivoa.obscore table}, and we we name this data link table “datalink.response”, we can then query the TAP service this way in order to access directly to the hea-event-list product:
+Suppose we have  {\em dataproduct\_type \/} = ‘hea-event-list’ in the \texttt{ivoa.obscore table}, and we name this DataLink table “datalink.response”, we can then query the TAP service this way in order to access directly to the hea-event-list product:
 
 \begin{verbatim}
 SELECT * FROM ivoa.obscore
