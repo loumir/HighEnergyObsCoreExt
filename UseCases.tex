@@ -1,0 +1,480 @@
+\subsection{Event-List Data and Responses}
+
+
+\subsubsection{Use Case --- Search for event lists surrounding Sgr A*, for example for an X-ray morphological study}
+
+{\em Identify all \gls{HEA} event lists encompassing Sgr~A* for initial selection for subsequent X-ray morphological studies.  Since the focus is on X-ray morphological studies, only the event lists and not the event bundles are desired.\/}
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Target name = ``Sgr A*'' or position inside 30 arcmin from (266.4168, $-29.0078$),
+  \item dataproduct\_type = ``event-list''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(target_name = 'Sgr A*' OR
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(266.4168, -29.0078, 0.5)) = 1)
+AND (dataproduct_type = 'hea-event-list')
+\end{verbatim}
+
+
+\subsubsection{Use Case --- Search for event lists that include a fully calibrated spectral axis for BL Lac for rapid X-ray spectrophotometric evaluation}
+
+{\em Identify all event lists that include the BL Lac, have a fully calibrated spectral axis (i.e., spectral responses have already been applied), and have at least 10,000 events.  These data will be used to prepare slides for a presentation.  Note that since calib\_status = 2 may not specify that the spectral axis is fully calibrated in physical units (HEA event lists are often considered ``calibrated'' even if the spectral axis is in pulse height units) the calibration status of the spectral axis must be checked explicitly.\/}
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Target name = ``BL Lac'' or position inside 5 arcmin from (330.680338, $+42.27777$),
+  \item dataproduct\_type = ``hea-event-list'',
+  \item calib\_level $\geq 2$,
+  \item em\_calib\_status = ``calibrated'',
+  \item ev\_xel $\geq 10000$.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(target_name = 'BL Lac' OR
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(330.680338, +42.27777, 0.083333)) = 1)
+AND (dataproduct_type = 'hea-event-list')
+AND (calib_level >= 2)
+AND (em_calib_status = 'calibrated')
+AND (ev_xel >= 10000)
+\end{verbatim}
+
+
+\subsubsection{Use Case ---  Search for SWGO event lists and their \glspl{IRF} for the event type `very-good' in the region of Cygnus loop for a TeV spectromorphology study}
+
+{\em Identify all event lists and their associated \glspl{IRF} of the region of Cygnus loop ($3^{\circ}$ diameter) taken with SWGO. Only data of the event type `very-good' are selected, in order to limit the amount of downloaded data.\/}
+
+\medskip
+\noindent Find all SWGO datasets satisfying:
+\begin{enumerate}[(i)]
+  \item s\_region position intersects with the source modeled by a circle of 1.5 deg around (312.775, 30.683),
+  \item dataproduct\_type = ``hea-event-list'' or ``aeff'' or ``edisp'' or ``psf'' or ``bkgrate'',
+  \item obs\_collection = ``SWGO-DR1'',
+  \item event\_type = ``very-good''.
+\end{enumerate}
+
+First, run the ObCore query:
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE (INTERSECTS(s_region, CIRCLE(312.775, 30.683, 1.5)) = 1)
+AND (dataproduct_type = 'hea-event-list' OR dataproduct_type = 'aeff'
+  OR dataproduct_type = 'edisp' OR dataproduct_type = 'psf'
+  OR dataproduct_type = 'bkgrate')
+AND (obs_collection = 'SWGO-DR1')
+AND (event_type = 'very-good')
+\end{verbatim}
+
+Then, for each row of the output, we identify the nature of the data product, and retrieve them using the ``access\_url''.
+
+\subsubsection{Use Case --- Search for event bundles via DataLink that include Cas A for a TeV spectromorphology study}
+
+{\em Identify all event bundles (event lists and their associated \glspl{IRF}) that include the Cas A SNR for subsequent TeV spectromorphology studies from a VERITAS data release. Since the instrumental responses are mandatory to remove instrumental effects, the event bundles that include the  \glspl{IRF} are required.\/}
+
+\medskip
+\noindent Find all VERITAS datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Target name = ``Cas A'' or position inside 2.5 arcmin from (350.8584, $+58.8113$),
+  \item dataproduct\_type = ``hea-event-list'',
+  \item obs\_collection = ``VERITAS-DR1'',
+  \item access\_format = ``datalink''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(target_name = 'Cas A' OR
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(350.8584, +58.8113, 0.042)) = 1)
+AND (dataproduct_type = 'hea-event-list')
+AND (obs_collection = 'VERITAS-DR1')
+AND (access_format = ’application/x-votable+xml;content=datalink’)
+\end{verbatim}
+
+Then, for each row of the output, we get access to a DataLink table (in VOTable) describing associated data linked to the hea-event-list dataset using the ``access\_url'' column value of the response ObsCore table.
+
+
+\subsubsection{Use Case --- Search for event bundles that include Cas A for X-ray spectrophotometric evolution studies}
+
+{\em Identify all event bundles that include the Cas A SNR and have at least 1 million events for subsequent spectrophotometric studies of the SNR expansion. Since only a few observations are expected to match this request and because the focus is on X-ray spectrophotometric studies, the event bundles that include the responses or the ancillary products used to make the responses are required.\/}
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Target name = ``Cas A'' or position inside 10 arcmin from (350.8584, $+58.8113$),
+  \item dataproduct\_type = ``hea-event-bundle'',
+  \item ev\_xel $\geq 1000000$.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(target_name = 'Cas A' OR
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(350.8584, +58.8113, 0.16667)) = 1)
+AND (dataproduct_type = 'hea-event-bundle')
+AND (ev_xel >= 1000000)
+\end{verbatim}
+
+
+\subsubsection{Use Case --- Search for event lists and their \glspl{IRF} of CTAO South observations at energies above 10 TeV for blind search of PeVatrons from a data release using DataLink}
+
+{\em Identify all event lists and their associated \glspl{IRF} taken by CTAO South that contains events above 10 TeV. Data taken with the Small Size Telescopes or Medium Size Telescopes can be then selected. \/}
+
+\medskip
+\noindent Find all CTAO datasets satisfying:
+\begin{enumerate}[(i)]
+  \item dataproduct\_type = ``hea-event-list'',
+  \item obs\_collection = ``CTAO-DR1'',
+  \item access\_format = ``datalink'',
+  \item instrument\_name contains ``CTAO-S'',
+  \item energy\_max >= $10^{12}$.
+\end{enumerate}
+
+First, run the ObCore query:
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE (dataproduct_type = 'hea-event-list')
+AND (obs_collection = 'CTAO-DR1')
+AND (access_format = 'application/x-votable+xml;content=datalink')
+AND (instrument_name LIKE 'CTAO-S')
+AND (energy_max >= 1.0e+12)
+\end{verbatim}
+
+The query output is a VOTable that follows the DataLink VO standard.
+
+We process this VOTABLE to access to the data:
+
+\begin{enumerate}[(i)]
+  \item for each row of the query output, get the ``obs\_id'' and the ``access\_url'' of the DataLink describing the ObsCore dataset entry,
+  \item get the DataLink VOTable showing the datasets associated to this entry
+  \item for each row of the DataLink VOTable, get the ``content\_qualifier'' and the ``access\_url'' column's value,
+  \item download the data associated to each ``access\_url'' value.
+\end{enumerate}
+
+
+Table \ref{tab:datalink1} displays an example of the DataLink response table attached to such an hea-event-list discovery.
+The obs\_publisher\_did of the single discovered hea-event-list is repeated in the ID column of the DataLink table.
+Mandatory FIELDS service\_def and error\_messsage are omitted because they are empty.
+
+\begin{landscape}
+\begin{center}
+\begin{longtable}{|p{0.15\linewidth}|p{0.2\linewidth}|p{0.08\linewidth}|p{0.22\linewidth}|p{0.1\linewidth}|p{0.12\linewidth}|p{0.13\linewidth}|}
+\hline%\sptablerule
+\textbf{ID}  &\textbf{\footnotesize access\_url}  &\textbf{\footnotesize semantics}&\textbf{\footnotesize description} &\textbf{\footnotesize content\_type} &\textbf{\footnotesize content\_length} &\textbf{\footnotesize content\_qualifier}\cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt1.fits} & {\footnotesize \#this} & {\footnotesize hea-event-list}  {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize application/x-fits-gadf} & {\footnotesize 1000000} & {\footnotesize hea-event-list} \cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt2.fits} & {\footnotesize \#calibration} & {\footnotesize Effective area of the telescope/instrument associated with the hea-event-list}  {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize application/x-fits-gadf} & {\footnotesize 10000} & {\footnotesize aeff} \cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt3.fits} & {\footnotesize \#calibration} & {\footnotesize Energy dispersion of hea-event-list}  {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize application/x-fits-gadf} & {\footnotesize 10000} & {\footnotesize edisp} \cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt4.fits} & {\footnotesize \#calibration} & {\footnotesize Point spread function of hea-event-list } {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize image/fits} & {\footnotesize 50000} & {\footnotesize psf} \cr
+\hline%\sptablerule
+{\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize https://xxx.yyy/zzz/ttt5.fits} & {\footnotesize \#calibration} & {\footnotesize Background rate of hea-event-list } {\footnotesize ivo://xxx/yyy/zzz\#ttt} & {\footnotesize text/csv} & {\footnotesize 1000} & {\footnotesize bkgrate} \cr
+\hline%\sptablerule
+\noalign{\vspace{10pt}}%
+\caption{DataLink response table attached to an {\bf hea-event-list} record in ObsCore.}
+\label{tab:datalink1}
+\end{longtable}
+\end{center}
+\end{landscape}
+
+\subsubsection{Use Case --- Search for spatially resolved spectropolarimetric observations of the Crab with spectral resolution R > 100}
+
+{\em Identify all event bundles for observations of the Crab that intersect the 1.0--100.0 keV energy range, have calibrated spatial and time axes, are spatially resolved in 2 dimensions in equatorial coordinates, have spectral resolution $R>100$, and include polarimetry measurements.  Note that ObsCore specifies that the axes lengths --- s\_xel1, s\_xel2, em\_xel, t\_xel, pol\_xel --- should be set to $-1$ for non-pixelated data like event lists, so these quantities are not useful for this query.\/}
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Target name = ``Crab'' or position inside 5 arcmin from (83.6324, $+22.0174$),
+  \item dataproduct\_type = ``hea-event-bundle'',
+  \item calib\_level $\geq 2$,
+  \item em\_res\_power $> 100$,
+  \item energy\_min $< 100000$,
+  \item energy\_max $> 1000$,
+  \item o\_ucd contains ``phys.polarization'',
+  \item o\_ucd contains ``pos.eq''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(target_name = 'Crab' OR target_name = 'M1' OR
+CONTAINS(POINT(s_ra, s_dec), CIRCLE(83.6324, +22.0174, 0.083333)) = 1)
+AND (dataproduct_type = 'hea-event-bundle')
+AND (calib_level >= 2)
+AND (em_res_power > 100)
+AND (energy_min < 100000.0) AND (energy_max >= 1000.0)
+AND (o_ucd LIKE '%phys.polarization%')
+AND (o.ucd LIKE '%pos.eq%')
+\end{verbatim}
+
+
+\subsubsection{Use Case --- Identify PSF response-functions for further analysis of previously downloaded data products}
+
+{\em Identify all Chandra Source Catalog point spread functions for source detections that fall within 2 arcmin radius of  (83.84358, $-5.43639$) in the Orion star-forming complex for Chandra observation 4374.  These PSFs will be used to analyze previously downloaded catalog data products for the same field.\/ }
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Position inside 3 arcmin from (83.84358, $-5.43639$),
+  \item dataproduct\_type = ``response-function'',
+  \item dataproduct\_subtype = ``psf'',
+  \item obs\_id = ``4374'',
+  \item obs\_collection = ``CSC2''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(CONTAINS(POINT(s_ra, s_dec), CIRCLE(83.84358, -5.43639, 0.033333)) = 1)
+AND (dataproduct_type = 'response-function')
+AND (dataproduct_subtype = 'psf')
+AND (obs_id = '4374')
+AND (obs_collection = 'CSC2')
+\end{verbatim}
+
+
+\subsubsection{Use Case --- Get all the \glspl{IRF} for a given CTAO observation, for simulation purposes}
+
+{\em Simulations are frequently used to estimate the science performance for a given astrophysical use case. To realise such simulations, \glspl{IRF} are required.\/ }
+
+\medskip
+\noindent Find the CTAO datasets satisfying:
+\begin{enumerate}[(i)]
+  \item dataproduct\_type = ``aeff'' or dataproduct\_type = ``psf'' or dataproduct\_type = ``edisp'' or dataproduct\_type = ``bkgrate'',
+  \item obs\_id = ``4374'',
+  \item obs\_collection = ``CTAO-DR1''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(dataproduct_type = 'aeff'
+  OR dataproduct_type = 'edisp'
+  OR dataproduct_type = 'psf'
+  OR dataproduct_type = 'bkgrate')
+AND (obs_id = '4374')
+AND (obs_collection = 'CTAO-DR1')
+\end{verbatim}
+
+\subsubsection{Use Case --- Search for all ANTARES neutrino events for a given dataset in the direction of a point source}
+
+{\em Using the ANTARES 2007--2017 point source data set, retrieve all events, background estimate, and detector acceptance to calculate the expected neutrino flux from a given point source, e.g. HESSJ0632+057, as in \textit{G. Illuminati for the ANTARES Collaboration, PoS(ICRC2019)920} and recalculate the significance of the neutrino flux.}
+
+\medskip
+\noindent Find all datasets satisfying
+\begin{enumerate}[(i)]
+  \item Position inside 5 degrees from (98.24, 5.81),
+  \item dataproduct\_type = ``hea-event-bundle'' or ``hea-event-list'' or ``response-function'',
+  \item obs\_collection = ``ANTARES-2017-PS''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN ivoa.obscore_hea
+WHERE
+(CONTAINS(POINT(s_ra, s_dec), CIRCLE(98.24, 5.81, 5.0)) = 1)
+AND (dataproduct_type IN ('hea-event-bundle', 'hea-event-list', 'response-function'))
+AND (obs_collection = 'ANTARES-2017-PS')
+\end{verbatim}
+
+\subsubsection{Use Case --- Retrieve the instrument response functions for a combined KM3NeT \& CTA sensitivity study for a point source.}
+
+{\em To study the combined future sensitivity for a source that is expected to emit gamma rays and neutrinos, retrieve general IRFs from both instruments to perform a sensitivity study for a source like Vela X as in \textbf{\hyperref[https://doi.org/10.1140/epjc/s10052-023-12279-z]{Eur. Phys. J. C. 84, 112 (2024)}}, considering only track-like events due to their better angular resolution.}
+
+\medskip
+\noindent Find all IRF datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Position inside 5 degrees from (0.8, -45.19),
+  \item dataproduct\_type = ``response-function'',
+  \item instrument\_name = ``KM3NeT-ARCA'',
+  \item t\_min/t\_max from 2027--2030, ({\em i.e.\/}, MJD 61406--62870),
+  \item event\_type = ``track''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN ivoa.obscore_hea
+WHERE
+(CONTAINS(POINT(s_ra, s_dec), CIRCLE(0.8, -45.19, 5.0)) = 1)
+AND (dataproduct_type = 'response-function'))
+AND (instrument_name = '%ARCA%')
+AND (t_min >= 61406)
+AND (t_max <= 62870)
+AND (event_type = 'track')
+\end{verbatim}
+
+% mireille : this query searches in KM3net data collection, but should it be also sent to a CTA archive in order to build the comparison? 
+
+\subsubsection{Use Case --- Study the combined neutrino flux for the Galactic plane}
+
+{\em Identify all neutrino data sets in the region of the Galactic plane to perform a combined neutrino flux study extending a study like the IceCube \textbf{Observation of high-energy neutrinos from the Galactic plane. DOI: 10.1126/science.adc9818}, using event lists and IRFs of datasets optimized for the analysis of diffuse neutrino emission.}
+
+\medskip
+\noindent Find all neutrino datasets satisfying:
+\begin{enumerate}[(i)]
+  \item messenger = ``neutrino'',
+  \item dataproduct\_type = ``hea-event-bundle'',
+  \item analysis\_mode = ``diffuse''.
+\end{enumerate}
+% diffuse
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN ivoa.obscore_hea
+WHERE
+(dataproduct_type = 'hea-event-bundle')
+AND (messenger = '%neutrino%')
+AND (analysis_mode = 'diffuse')
+\end{verbatim}
+
+\subsubsection{Use Case --- Calculate the probability for a source class to be emitters of tau neutrinos}
+
+{\em Using a catalog of potential sources, calculate the probability of measuring a $\nu_{\tau}$ neutrino flux from a stacking of all sources of that type with 10 years of data taking with widely spaced, high energy detectors like ARCA.}
+
+\medskip
+\noindent Find all neutrino datasets satisfying:
+\begin{enumerate}[(i)]
+  \item dataproduct\_type = ``response-function'',
+  \item messenger contains ``pdgid-16'' or ``pdgid+16'',
+  \item obs\_mode = ``wide-array'',
+  \item analysis\_mode = ``pointsource''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN ivoa.obscore_hea
+WHERE
+(dataproduct_type = 'response-function')
+AND (messenger = '%pdgid-16%' OR messenger = '%pdgid+16%')
+AND (obs_mode LIKE '%wide-array%')
+AND (analysis_mode LIKE '%pointsource%')
+\end{verbatim}
+
+\subsection{Advanced Data Products}
+
+\subsubsection{Use Case --- Search for Chandra Source Catalog position error MCMC draws for X-ray detections in the vicinity of Gaia DR3 486718823701242368}
+
+{\em Identify all Chandra Source Catalog position error MCMC draws for source detections that fall within 5 arcsec radius of  (54.036061, $+61.907633$).  The MCMC draws will be evaluated to establish whether there are potentially unresolved X-ray sources that may conincide with the white dwarf for observation planning.\/}
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Position within 5.0 arcsec from (54.036061, $+61.907633$),
+  \item dataproduct\_type = ``draws'',
+  \item dataproduct\_subtype = ``poserr'',
+  \item obs\_collection = ``CSC2''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(CONTAINS(POINT(s_ra, s_dec), CIRCLE(54.036061, +61.907633, 0.0013888)) = 1)
+AND (dataproduct_type = 'draws')
+AND (dataproduct_subtype = 'poserr')
+AND (obs_collection = 'CSC2')
+\end{verbatim}
+% mireille naive question: do we really need the join with the ivoa.obscore_hea table ? 
+% constraints on event_type would require it 
+
+
+\subsubsection{Use Case --- Search for flux maps for CTAO-North observations between two observations ID}
+
+{\em Identify all flux maps from the CTAO-North data collection within a range of observation identifiers selected by the user .\/}
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item dataproduct\_type = ``image'',
+  \item dataproduct\_subtype = ``fluxmap'',
+  \item obs\_collection = ``CTAO-DR1'',
+  \item int(obs\_id) $> 4374$,
+  \item int(obs\_id) $\leq 4379$,
+  \item  instrument\_name contains ``CTAO-N''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+((dataproduct_type = 'image')
+OR (dataproduct_subtype = 'fluxmap'))
+AND (obs_collection = 'CTAO-DR1')
+AND (instrument_name LIKE 'CTAO-N')
+AND (CAST(obs_id AS INTEGER) > 4374)
+AND (CAST(obs_id AS INTEGER) <= 4379)
+\end{verbatim}
+
+
+\subsubsection{Use Case --- Search for M31 source light curves and aperture photometry probability density functions that intersect a specific time interval}
+
+{\em Identify all light curves and aperture photometry probability density functions of X-ray sources detected in the field of M31 covering the energy range 0.3--7.0 keV that include observation data in the interval MJD 56320--56325 TT during which interval a transient event was thought to have occurred.  Because the data products are expected to include extremely sparse time axes, the t\_intervals TMOC must be used for the query.\/}
+
+%mireille
+%\TODO{when data product is light-curve, use the new term "light-curve" of the product-type vocabulary instead of "timeseries" which is the top concept in the vocabulary. This vocabulary should be adopted for the new implementations of ObsCore 1.1 and the next versions. }
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item Position within 1.5 degrees from (10.6847, $+41.2688$),
+  \item dataproduct\_type = ``light-curve'' {\em or\/} ``pdf'',
+  \item calib\_level = 4,
+ % mireille \item energy\_min $\leq 0.3$ {\em and\/} energy\_max $\geq 7.0$,
+   \item energy\_min $\geq 0.3$ {\em and\/} energy\_max $\leq 7.0$,
+  \item t\_intervals TMOC intersects\footnote{We note that this function does not yet exist in ADQL} MJD 56320--56325 TT.
+\end{enumerate}
+
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(CONTAINS(POINT(s_ra, s_dec), CIRCLE(10.6847, +41.2688, 1.5)) = 1)
+AND ((dataproduct_type = 'light-curve') OR (dataproduct_type = 'pdf'))
+AND (calib_level = 4)
+AND (energy_min <= 300.0) AND (energy_max >= 7000.0)
+AND (INTERSECTS(TMOC(17, t_intervals), TMOC(17, 56320.0, 56325.0)) = 1)
+\end{verbatim}
+
+\subsubsection{Use Case --- Search for the CTAO flux light curves of PKS 2155-304 in 2030}
+
+{\em Identify all light curves obtained on the source PKS 2155-304 in 2030 with the CTAO observatory.\/}
+
+\medskip
+\noindent Find all datasets satisfying:
+\begin{enumerate}[(i)]
+  \item dataproduct\_type = ``light-curve'',
+  \item obs\_collection = ``CTAO-DR1'',
+  \item tmin $\geq 62502$ ({\em i.e.\/}, 2030-01-01),
+  \item tmax $\leq 62866$ ({\em i.e.\/}, 2030-12-31),
+  \item target\_name = ``PKS 2155-304''.
+\end{enumerate}
+
+\begin{verbatim}
+SELECT * FROM ivoa.obscore
+NATURAL JOIN  ivoa.obscore_hea
+WHERE
+(dataproduct_type = 'light-curve')
+AND (obs_collection = 'CTAO-DR1'
+AND (t_min >= 62502)
+AND (t_max <= 62866)
+AND target_name = 'PKS 2155-304')
+\end{verbatim}
+
+
