@@ -187,8 +187,8 @@ In addition to {\em dataproduct\_type\/} terms that focus on event data, we note
 {\bf response-function}: a dataset that records a mapping from a physical quantity to an observable quantity. For \gls{HEA}, this may be the components of the composite \gls{IRF} such as an Auxiliary Response File ({\bf arf}), Redistribution Matrix File ({\bf rmf}), Effective Area ({\bf aeff}), Energy Dispersion ({\bf edisp}), the Background Rate ({\bf bkgrate}). The Point Spread Function ({\bf psf}) is a response function that is generally applicable across multiple wavebands. While these datasets may generally be represented as an N-dimensional data cube, designating them as {\bf response-function}s enhances data discovery for very common types of \gls{HEA} dataset (see the use cases in Appendix~\ref{sec:uc}).
 \end{quote}
 
-\TODO{ mireille: Rewrite this paragraph to avoid measurements: 
-no agreement exist for this term among ObsCore Implementors in practice.  }
+%\TODO{ mireille: Rewrite this paragraph to avoid measurements: 
+%no agreement exist for this term among ObsCore Implementors in practice.  }
 
 The {\bf measurements} {\em dataproduct\_type\/} is quite useful for many different types of advanced data products (which may be derived from multiple observations). But users of those products often may not be interested in the progenitor datasets, especially as multiple advanced data products may be extracted from the same single progenitor or a few progenitors ({\em e.g.\/}, measurements associated with multiple sources detected in a single observation field). We propose to delete the caveat associated with {\em dataproduct\_type\/} = ``measurements'' in the ObsCore IVOA Recommendation (\S~4.1.1) that requires the derived data products be exposed ``{\bf together} with the progenitor observation dataset''.  The recovery of progenitor observation datasets may be achieved using provenance information, if desired.
 
