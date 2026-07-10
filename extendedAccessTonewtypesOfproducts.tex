@@ -249,8 +249,8 @@ resp\_s\_dec & deg & double & ICRS Central declination, for the region where the
 resp\_s\_region & unitless & String & Region of interest  for response use (expressed in ICRS frame)\\\hline
 resp\_t\_intervals & unitless& String (TMOC) & time coverage for response use \\\hline
 %response energy coverage
-resp\_energy\_min & m & double & Energy band minimal value for response use  \\\hline
-resp\_energy\_max & m & double & Energy band maximal value for response use  \\\hline
+resp\_energy\_min & eV & double & Energy band minimal value for response use  \\\hline
+resp\_energy\_max & eV & double & Energy band maximal value for response use  \\\hline
 
 \caption{Possible mandatory fields of the Response table proposed in this HEIG ObsCore extension serialisation}
 \label{tab:response_table}
@@ -286,7 +286,7 @@ AND (obs_id = '1527')
 AND (obs_collection = 'HESS')
 \end{verbatim}
 
-If a time constraint is needed, then we can use {\em resp\_t\_min \/}, and {\em resp\_t\_max \/} and constrain the interval like: 
+If a time constraint is needed, then we can use extra columns like {\em resp\_t\_min \/}, and {\em resp\_t\_max \/} and constrain the interval like: 
 \begin{verbatim}
 AND (resp_t_min > 56000.0 and resp_t_max < 56001.5) 
 \end{verbatim}
