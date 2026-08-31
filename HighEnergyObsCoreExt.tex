@@ -412,21 +412,23 @@ Table~\ref{tab:obscore_hea} summarizes the proposal for the \gls{HEA} extension 
 
 {\centering \bf Column Name}     &{\centering \bf UCD} &{\centering \bf Unit} &{\centering \bf Type} &{\centering \bf Description} &{\centering \bf MAN}\\
 \hline
-{\em ev\_xel\/} & \ucd{meta.number;instr.detection;phys.particle} &  unitless & int & {Number of events in an {\bf hea-event-list}}& NO \\
+{\em obs\_publisher\_did} & \ucd{meta.ref.ivoid} &unitless & String & Related dataset ID (foreign key) & YES \\
 \hline
-{\em s\_ref\_energy\/} &  \ucd{meta.ref;em.energy;pos} & eV & float & {Energy at which the ObsCore spatial characterization attributes {\em s\_fov\/} , {\em s\_region\/}, {\em s\_resolution\/} are defined} & NO \\
+{\em ev\_xel\/} & \ucd{meta.number;instr.detection;phys.particle} &  unitless & integer & {Number of events in an {\bf hea-event-list}}& NO \\
 \hline
-{\em em\_ref\_energy\/}  & \ucd{meta.ref;em.energy;em} & eV & float & {Energy at which the ObsCore spectral characterization attributes {\em em\_res\_power\/}, {\em em\_resolution\/} are defined} & NO \\
+{\em s\_ref\_energy\/} &  \ucd{meta.ref;em.energy;pos} & eV & double & {Energy at which the ObsCore spatial characterization attributes {\em s\_fov\/} , {\em s\_region\/}, {\em s\_resolution\/} are defined} & NO \\
 \hline
-{\em s\_ref\_oaa\/} & \ucd{pos.posAng;instr.offset;pos} & deg & float & {Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spatial characterization attributes {\em s\_fov\/} , {\em s\_region\/}, {\em s\_resolution\/} are defined} & NO \\
+{\em em\_ref\_energy\/}  & \ucd{meta.ref;em.energy;em} & eV & double & {Energy at which the ObsCore spectral characterization attributes {\em em\_res\_power\/}, {\em em\_resolution\/} are defined} & NO \\
 \hline
-{\em em\_ref\_oaa\/} & \ucd{pos.posAng;instr.offset;em} & deg & float & {Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spectral characterization attributes {\em em\_res\_power\/}, {\em em\_resolution\/} are defined} & NO \\
+{\em s\_ref\_oaa\/} & \ucd{pos.posAng;instr.offset;pos} & deg & double & {Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spatial characterization attributes {\em s\_fov\/} , {\em s\_region\/}, {\em s\_resolution\/} are defined} & NO \\
+\hline
+{\em em\_ref\_oaa\/} & \ucd{pos.posAng;instr.offset;em} & deg & double & {Off-axis angle ({\em i.e.\/}, the angular separation of the target or source from the telescope optical axis) at which the ObsCore spectral characterization attributes {\em em\_res\_power\/}, {\em em\_resolution\/} are defined} & NO \\
 \hline
 {\em t\_intervals\/} & \ucd{TBD}& unitless & TMOC & {List of observation intervals or stable/good time intervals describing the exact observation time coverage} & NO \\
 \hline
-{\em energy\_min\/} & \ucd{em.energy;stat.min} & float & eV &  {Energy associated to the ObCcore attribute {\em em\_max\/}, describing the minimal energy of the dataset} & NO \\
+{\em energy\_min\/} & \ucd{em.energy;stat.min} & eV & double &  {Energy associated to the ObCcore attribute {\em em\_max\/}, describing the minimal energy of the dataset} & NO \\
 \hline
-{\em energy\_max\/} & \ucd{em.energy;stat.max} & float & eV & {Energy associated to the ObsCore attribute {\em em\_min\/}, describing the maximal energy of the dataset} & NO \\
+{\em energy\_max\/} & \ucd{em.energy;stat.max} & eV & double & {Energy associated to the ObsCore attribute {\em em\_min\/}, describing the maximal energy of the dataset} & NO \\
 \hline
 {\em obs\_mode\/} & \ucd{meta.code;obs.param} & unitless & string  &{Observation mode of the observation ({\em e.g.\/}, TBU)} & NO \\
 \hline
@@ -525,6 +527,9 @@ Users will certainly want to discover these data products independently from the
 
 {\bf region}: A dataset that includes an encoding of (one or more) regions of parameter space, for example a spatial region or a region of phase space covered by a dataset.  The set of dimensions represented by the region can be arbitrary.
 \end{quote}
+
+An advanced-dataproduct-type Vocabulary \footnote{\url{https://github.com/ivoa-std/VEPs/pull/21/changes\#diff-25a867536b53bdb6848baeba09cfc4df1e4ad42da919d440902e57b917dd9abc}.} is proposed to the Semantics WG to register these terms in a standard vocabulary, that can be extended to other spectral domains, e.g radio astronomy.  
+
 
 %mireille proposal for vocabularies 
 \input{Dataproducts-Summary-table}
