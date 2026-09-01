@@ -82,17 +82,17 @@ SELECT o.obs_publisher_did, o.obs_id, s_ra, s_dec, s_fov, t_min, t_max,
 energy_min, energy_max, access_url, access_format, scan_mode,
 resp_publisher_did, resp.obs_id, resp_access_url, resp_access_format, 
 resp_energy_max, resp_energy_min, 
-FROM ivoa.response , (SELECT o.obs_publisher_did, o.obs_id, scan_mode 
-FROM ivoa.obscore 
-NATURAL JOIN  ivoa.obscore-hea  
-WHERE
-(o.obs_collection = 'IACT') 
-AND (scan_mode=raster-map) )
-AND (o.obs_id = '1976')
-OR CONTAINS(POINT(s_ra, s_dec), CIRCLE, 83.6324, +22.0174, 0.083333) = 1) ) as s
-WHERE
+FROM ( SELECT o.obs_publisher_did, o.obs_id, scan_mode 
+     FROM ivoa.obscore 
+     NATURAL JOIN  ivoa.obscore-hea  
+     WHERE
+     (o.obs_collection = 'IACT') 
+     AND (scan_mode=raster-map)
+     AND (o.obs_id = '1976')
+     OR CONTAINS(POINT(s_ra, s_dec), CIRCLE, 83.6324, +22.0174, 0.083333) = 1) as s
+JOIN ivoa.response ON 
 resp.obs_id =s.obs_id
-AND (resp_product_type = 'edisp')
+WHERE (resp_product_type = 'edisp')
 % s is the list of observations satisfying position or obs_id and scan mode criteria
 \end{verbatim}
 }% end \small
