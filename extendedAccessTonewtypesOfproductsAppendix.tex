@@ -51,7 +51,7 @@ The {\tt ivoa.response} table uses a specific resp\_dataproduct\_type column whi
 \end{enumerate}
 
 When using the response table defined in Table \ref{tab:response_table}, we can join the {\tt ivoa.obscore} table with the {\tt ivoa.response} table on 
-the two keys  {\em obs\_id\/} and {\em obs\_publisher\_did\/} for instance, as in: 
+one of the two keys  {\em obs\_id\/} or {\em obs\_publisher\_did\/} for instance, as in: 
 {\small
 \begin{verbatim}
 SELECT o.obs_publisher_did, o.obs_id, s_ra, s_dec, s_fov, t_min, t_max, 
