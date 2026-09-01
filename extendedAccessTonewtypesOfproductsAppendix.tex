@@ -2,7 +2,7 @@ In this appendix we further illustrate the possible use of an alternate table jo
 
 In order to handle the various possible cardinality relationships between {\bf response-function} and {\bf hea-event-list}  datasets, foreign keys must be defined in the {\tt ivoa.response} tables that will allow {\tt  JOIN} operations between those tables and the {\tt ivoa.obscore} table.
 
-The {\tt ivoa.response} table uses a specific resp\_dataproduct\_type column which is compliant to the response type vocabulary : \url{https://www.ivoa.net/rdf/response-type/} and has its own resp\_obs\_publisher\_did column as well, in order to distinguish which response matches  which ObsCore data set in the {\tt ivoa.response} table. 
+The {\tt ivoa.response} table uses a specific resp\_dataproduct\_type column which is compliant to the response type vocabulary : \scriptsize{\url{https://www.ivoa.net/rdf/response-type/}} and has its own resp\_obs\_publisher\_did column as well, in order to distinguish which response matches  which ObsCore data set in the {\tt ivoa.response} table. 
 
 \subsection*{Proposal for a Response Table {\tt ivoa.response}}
 
