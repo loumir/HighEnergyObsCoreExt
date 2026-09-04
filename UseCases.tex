@@ -16,13 +16,17 @@ In agreement with Semantics WG we have 3 existing/draft/proposed vocabularies:
 Three strategies have been considered in this note to organize data discovery based on an extension of  ObsCore 1.1 in TAP\null. Each of them needs to be evaluated in various situations and explored further in terms of clarity for the user and robustness. 
 
 \begin{itemize} 
-\item {\bf Proposal 1}: Serve all data products  in the {\tt ivoa.obscore} table
-The column 'dataproduct\_type' in {\tt ivoa.obscore} can contain any term from one of the three vocabularies  \textsl{product-type}, \textsl{advanced-product-type},  \textsl{response-type}: 
-All products are distributed with the {\tt ivoa.obscore} table as in 
-Chandra use case A.1.8, A.2.1,A.2.3, A2.4 , CTAO: use case A1.9, SWGO use case A1.3
+\item {\bf Proposal 1}: Serve all data products in the {\tt ivoa.obscore} table.  The attribute {\em dataproduct\_type\/} in {\tt ivoa.obscore} can contain any term from one of the three vocabularies  \textsl{product-type}, \textsl{advanced-product-type},  or \textsl{response-type}: 
+All products are distributed via the {\tt ivoa.obscore} table as in 
+Chandra use cases A.1.8, A.2.1, and A.2.3, CTAO use case A1.9 and A2.4, and SWGO use case A1.3.
 
-Problem: If you search {\bf hea-event-list} or {\bf light-curve} in a sky region together with {\bf response-function} files, for instance {\bf psf}, the query response may provide all datasets together mixing the various data products type together. Therefore the user will have to sort which {\bf psf} applies to  which {\bf hea-event-list} or {\bf light-curve} for instance. \\
- You can use GROUP BY {\em obs\_id} for instance, but still there may be several light curves findable in the selected region, so the issue is to organize and group properly corresponding light curves with appropriate {\bf psf}, files, especially if the point spread function varies in the field of view. 
+This has the advantage that it is easy for the end-user to understand.  All data products are accessed from the same table and the user does not have to know details about which data products need to be queried from what table.
+
+A potential disadvantage is that the results of queries for multiple types of datasets will be harder to correlate, especially if the different data products types don't have a one-to-one cardinality relationship.  For example, if you search for  {\bf hea-event-list} or {\bf light-curve} in a sky region together with {\bf response-function} files, for instance {\bf psf}s, the query response may provide all datasets together mixing the various data product types together.  The user will therefore have to determine which {\bf psf}(s) are associated with each {\bf hea-event-list} or {\bf light-curve}.
+
+The user could for example choose to use GROUP BY {\em obs\_id\/}, but still there may be several {\bf light-curve}s and/or {\bf psf}s within the selected region, so the issue is to organize and group properly corresponding {\bf light-curve}s with their associated {\bf psf} files, especially if the point spread function varies over the field of view.
+
+In practice, many advanced data products of the same type may be associated with a single {\bf hea-event-list} and so archives that serve such products will generally provide adequate metadata to allow the correlations to be performed.  These metadata may not be directly accessible through the ObsCore TAP service however, which would place the onus on the end-user to perform these correlations after-the fact.
 
 \item {\bf Proposal 2} : Add new terms to product-type vocabulary and distinguish among response types and advanced product types using {\em dataproduct\_subtype} in {\tt ivoa.obscore}. 
 The terms  pdf, draws, region, response-function are added to product-type vocabulary. 
