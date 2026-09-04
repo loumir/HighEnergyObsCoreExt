@@ -28,16 +28,18 @@ The user could for example choose to use GROUP BY {\em obs\_id\/}, but still the
 
 In practice, many advanced data products of the same type may be associated with a single {\bf hea-event-list} and so archives that serve such products will generally provide adequate metadata to allow the correlations to be performed.  These metadata may not be directly accessible through the ObsCore TAP service however, which would place the onus on the end-user to perform these correlations after-the fact.
 
-\item {\bf Proposal 2} : Add new terms to product-type vocabulary and distinguish among response types and advanced product types using {\em dataproduct\_subtype} in {\tt ivoa.obscore}. 
+\item {\bf Proposal 2}: Add new terms to the product-type vocabulary and distinguish among response types and advanced product types using {\em dataproduct\_subtype\/} in {\tt ivoa.obscore}. 
 The terms  pdf, draws, region, response-function are added to product-type vocabulary. 
 All products are distributed with the {\tt ivoa.obscore} table.
-See examples given for KM3net  A1.10, A1.13, and Chandra A1.8
+See use cases A.1.10 and A.1.13 for KM3NeT and Chandra use case A.1.8.
 
-Problems: 
-\begin{itemize} 
-\item {\em dataproduct\_subtype} is not standardized in ObsCore and left open for archives’ specific needs. 
-\item The response type needs  2 columns to be determined. 
-\item The interpretation  of the {\em dataproduct\_subtype} column is ambiguous as the content can be a {\bf response} type, a category of map (excess map, significance map, etc) or some specific description chosen in a specific archive. 
+This approach is included largely for compatibility with the ObsCore Recommendation Version 1.1, which has a limited set of {\em dataproduct\_type\/}s and so requires the use of {\em dataproduct\_subtype\/} to discriminate between different data product types that share the same {\em dataproduct\_type\/}.  
+
+A disadvantage of this approach is that queries on two ObsCore attributes are required to identify certain types of data products, for example different types of {\em response-function\/}s.  The interpretation  of the {\em dataproduct\_subtype\/} attribute may be ambiguous as the content could be ({\e.g.\/}) a type of {\bf response-function}, or a category of image ({\em e.g.\/}, an excess map or significance map) or some specific description chosen by a specific archive.
+
+A standardized vocabulary for {\em dataproduct\_subtype\/} will be beneficial.  We have proposed standardized terms for various types of {\bf response-function}s in \S~5.  However, there are several types of images that are commonly used in \gls{HEA} that could, with some additional discussion, also be standardized.
+
+However, the ability for each individual archive to use {\em dataproduct\_subtype\/} ``to more precisely define the nature of the dataset'' (ObsCore Recommendation Version 1.1 \S~4.1) should not be discounted.  Each archive is likely to have many different types of data products that would otherwise have the same {\em dataproduct\_type\/} that will need to be discriminated to be useful.  Some data products may be unique to a particular observatory but nevertheless highly significant for end-users of that observatory's data.
 \end{itemize}
 
 \item {\bf Proposal 3} : Separate the three kinds of products defined in the three distinct vocabularies as proposed with Semantics WG.
