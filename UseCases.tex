@@ -42,16 +42,19 @@ A standardized vocabulary for {\em dataproduct\_subtype\/} will be beneficial.  
 However, the ability for each individual archive to use {\em dataproduct\_subtype\/} ``to more precisely define the nature of the dataset'' (ObsCore Recommendation Version 1.1 \S~4.1) should not be discounted.  Each archive is likely to have many different types of data products that would otherwise have the same {\em dataproduct\_type\/} that will need to be discriminated to be useful.  Some data products may be unique to a particular observatory but nevertheless highly significant for end-users of that observatory's data.
 \end{itemize}
 
-\item {\bf Proposal 3} : Separate the three kinds of products defined in the three distinct vocabularies as proposed with Semantics WG.
+\item {\bf Proposal 3}: Separate the three kinds of products defined in the three distinct vocabularies as proposed with Semantics WG.
 Implement one table for each kind: 
 \begin{itemize}
-\item {\tt ivoa.obscore} uses {\em dataproduct\_type} in \textsl{product-type} vocabulary
-\item {\tt ivoa.response} uses {\em dataproduct\_type} in \textsl{response-type} vocabulary
-\item {\tt ivoa.adp} uses {\em dataproduct\_type} in \textsl{advanced-product-type} vocabulary
+\item {\tt ivoa.obscore} uses {\em dataproduct\_type\/} from the \textsl{product-type} vocabulary;
+\item {\tt ivoa.response} uses {\em dataproduct\_type\/} from the \textsl{response-type} vocabulary;
+\item {\tt ivoa.adp} uses {\em dataproduct\_type\/} from the \textsl{advanced-product-type} vocabulary.
 \end{itemize}
 
-The benefits lies in tracing clearly the connections between a response file ( resp. advanced data products)  and a data set from the  current \textsl{product-type} datasets.
-This strategy is still to investigate in detail. Appendix B provides hints for implementing it. 
+The benefits lie in tracing clearly the connections between response files and/or advanced data products  to datasets from the  currently included in the \textsl{product-type} vocabulary.  This separation also addressed concerns that most {\bf response-function}s are not ``on-the-sky'' data products, despite their importance to \gls{HEA} data analysis.  (Advanced data products currently proposed for inclusion in ObsCore are all ``on-the-sky'' data, although the definitions of the products are sufficiently general that this is not necessarily the case.)
+
+The disadvantage of this approach is that the end-user will need to know which vocabularies would need to be queried for which data product types and this may require a level of knowledge of IVOA implementation internals that would go beyond what is otherwise required of end-users.  This will be more important for end-users who prefer to write their own queries directly using ADQL (for example, using TOPCAT), and could be particularly troublesome if the end user needs to change the syntax of their {\em dataproduct\_type\/} query depending on which vocabulary is used.
+
+This strategy still needs to be investigated in detail.  Some hints for implementing this approach are provided in Appendix~\ref{sec:accessoptionsappendix}. 
 \end{itemize} 
 
 \subsection{Event-List Data and Responses}
