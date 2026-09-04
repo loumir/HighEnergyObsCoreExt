@@ -20,7 +20,7 @@ The column 'dataproduct\_type' in {\tt ivoa.obscore} can contain any term from o
 All products are distributed with the {\tt ivoa.obscore} table as in 
 Chandra use case A.1.8, A.2.1,A.2.3, A2.4 , CTAO: use case A1.9, SWGO use case A1.3
 
-Problem: If you search {\bf hea-event-list} or {\bf light-curve} in a sky region together with {\bf response-function} files, for instance {\bf psf}, the query response may provide all datasets together mixing the various data products type together. Therefore the user will have to sort which {\bf psf}applies to  which {\bf hea-event-list} or {\bf light-curve} for instance. \\
+Problem: If you search {\bf hea-event-list} or {\bf light-curve} in a sky region together with {\bf response-function} files, for instance {\bf psf}, the query response may provide all datasets together mixing the various data products type together. Therefore the user will have to sort which {\bf psf} applies to  which {\bf hea-event-list} or {\bf light-curve} for instance. \\
  You can use GROUP BY {\em obs\_id} for instance, but still there may be several light curves findable in the selected region, so the issue is to organize and group properly corresponding light curves with appropriate {\bf psf}, files, especially if the point spread function varies in the field of view. 
 
 \item {\bf Proposal 2} : Add new terms to product-type vocabulary and distinguish among response types and advanced product types using {\em dataproduct\_subtype} in {\tt ivoa.obscore}. 
